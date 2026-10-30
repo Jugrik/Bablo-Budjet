@@ -114,6 +114,15 @@ main.wrap{padding-block:6px calc(104px + env(safe-area-inset-bottom,0px))}
 .row{display:flex;align-items:center;gap:12px;padding:10px 14px;min-height:62px;width:100%;text-align:left;position:relative}
 .row + .row::before{content:"";position:absolute;top:0;right:14px;left:64px;border-top:1px solid var(--sep)}
 button.row:active{background:var(--fill)}
+.sw{position:relative;overflow:hidden;transition:height .3s var(--ease),opacity .3s}
+.sw + .sw::before{content:"";position:absolute;top:0;right:14px;left:64px;border-top:1px solid var(--sep);z-index:2}
+.sw .row{background:var(--card);z-index:1;touch-action:pan-y;transition:transform .28s var(--ease)}
+.sw .row.drag{transition:none}
+.sw .row:active{background:var(--card)}
+.swbg{position:absolute;inset:0;display:flex;justify-content:flex-end;background:var(--neg)}
+.swdel{width:92px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#FFFFFF;font-size:12px;font-weight:600;transition:width .2s var(--ease)}
+.swdel .i{width:22px;height:22px}
+.sw.full .swdel{width:100%}
 .row .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
 .row .t1{font-size:16px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row .t2{font-size:13px;color:var(--fg2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -566,7 +575,7 @@ function rowHtml(t){
   let sub=t.note||'';
   if(t.type==='tr'){const a=W(t.walletId),b=W(t.toWallet);sub=(a?a.name:'?')+' → '+(b?b.name:'?')+(t.note?' · '+t.note:'');}
   else if(w==='all'&&S.wallets.length>1){const a=W(t.walletId);if(a)sub=a.name+(t.note?' · '+t.note:'');}
-  return `<button class="row${t.id===S.lastId?' new':''}" data-a="edit" data-id="${t.id}">${ciC(c)}<span class="tx"><span class="t1">${esc(c.name)}</span>${sub?`<span class="t2">${esc(sub)}</span>`:''}</span><span class="am num ${cls}">${sign}${money(t.amount)}</span></button>`;
+  return `<div class="sw" data-id="${t.id}"><div class="swbg"><button class="swdel" data-a="swDel" data-id="${t.id}" aria-label="Удалить операцию">${ic('trash')}Удалить</button></div><button class="row${t.id===S.lastId?' new':''}" data-a="edit" data-id="${t.id}">${ciC(c)}<span class="tx"><span class="t1">${esc(c.name)}</span>${sub?`<span class="t2">${esc(sub)}</span>`:''}</span><span class="am num ${cls}">${sign}${money(t.amount)}</span></button></div>`;
 }
 function groupsHtml(list,withYear){
   const groups=[];list.forEach(t=>{const g=groups[groups.length-1];if(g&&g.date===t.date)g.items.push(t);else groups.push({date:t.date,items:[t]});});
@@ -937,6 +946,51 @@ function toast(msg,label,act){
 }
 function refresh(){render();if(S.sheet==='wallets')drawWallets();else if(S.sheet==='search'){const q=$('#qres');if(q)q.innerHTML=searchResults();}}
 
+/* ================= свайп для удаления ================= */
+const SWW=92;let swOpen=null,swJust=0;
+function swClose(except){if(swOpen&&swOpen!==except){const r=swOpen.querySelector('.row');r.style.transform='';swOpen.classList.remove('open');swOpen=null;}}
+function deleteTx(id,wrap){
+  const ex=S.tx.find(t=>t.id===id);if(!ex)return;const copy={...ex};
+  const done=()=>{S.tx=S.tx.filter(t=>t.id!==id);DB.delTx(id);swOpen=null;refresh();
+    toast('Операция удалена','Вернуть',()=>{S.tx.push(copy);DB.putTx(copy);refresh();});};
+  if(wrap&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const h=wrap.offsetHeight;wrap.style.height=h+'px';
+    const r=wrap.querySelector('.row');r.style.transform='translateX(-100%)';
+    requestAnimationFrame(()=>{wrap.style.height='0px';wrap.style.opacity='0';});
+    setTimeout(done,300);
+  }else done();
+}
+(function(){
+  let st=null;
+  document.addEventListener('pointerdown',e=>{
+    const row=e.target.closest('.sw > .row');
+    if(!row){if(swOpen&&!e.target.closest('.swdel'))swClose();return;}
+    const wrap=row.parentNode;if(swOpen&&swOpen!==wrap)swClose();
+    st={row,wrap,x:e.clientX,y:e.clientY,base:wrap.classList.contains('open')?-SWW:0,lock:null,dx:0,id:e.pointerId};
+  },{passive:true});
+  document.addEventListener('pointermove',e=>{
+    if(!st||e.pointerId!==st.id)return;
+    const dx=e.clientX-st.x,dy=e.clientY-st.y;
+    if(st.lock===null){if(Math.abs(dx)<8&&Math.abs(dy)<8)return;st.lock=Math.abs(dx)>Math.abs(dy)?'h':'v';if(st.lock==='h')st.row.classList.add('drag');}
+    if(st.lock!=='h')return;
+    let x=Math.min(0,st.base+dx);const w=st.wrap.offsetWidth;
+    if(x<-SWW)x=-SWW+(x+SWW)*.85;
+    st.dx=x;st.row.style.transform=`translateX(${x}px)`;
+    st.wrap.classList.toggle('full',x<-w*.6);
+  },{passive:true});
+  const end=e=>{
+    if(!st||(e&&e.pointerId!==st.id))return;const s=st;st=null;
+    if(s.lock!=='h')return;
+    s.row.classList.remove('drag');swJust=Date.now();
+    const w=s.wrap.offsetWidth;
+    if(s.dx<-w*.6){deleteTx(s.wrap.dataset.id,s.wrap);return;}
+    if(s.dx<-SWW/2){s.row.style.transform=`translateX(${-SWW}px)`;s.wrap.classList.add('open');s.wrap.classList.remove('full');swOpen=s.wrap;}
+    else{s.row.style.transform='';s.wrap.classList.remove('open','full');if(swOpen===s.wrap)swOpen=null;}
+  };
+  document.addEventListener('pointerup',end,{passive:true});
+  document.addEventListener('pointercancel',e=>{if(st&&st.lock==='h')end(e);else st=null;},{passive:true});
+})();
+
 /* ================= обработка нажатий ================= */
 function arm(b,label,fn){if(!b.classList.contains('armed')){const old=b.textContent;b.classList.add('armed');b.textContent=label;setTimeout(()=>{if(b.isConnected){b.classList.remove('armed');b.textContent=old;}},3500);return;}fn();}
 const ACT={
@@ -958,7 +1012,8 @@ const ACT={
   skipOnb:()=>{S.settings.onboarded=true;saveSettings();render();},
   clearDemo:()=>{resetAll();refresh();toast('Готово, можно начинать');},
   add:b=>openEditor(null,b.dataset.t),
-  edit:b=>openEditor(b.dataset.id),
+  edit:b=>{if(Date.now()-swJust<350)return;const w=b.parentNode;if(w.classList&&w.classList.contains('open')){swClose();return;}openEditor(b.dataset.id);},
+  swDel:b=>deleteTx(b.dataset.id,b.closest('.sw')),
   edType:b=>{const t=b.dataset.t;if(D.type===t)return;
     if(t==='tr'&&S.wallets.length<2){toast('Сначала добавьте второй счёт');return;}
     D.type=t;if(t==='tr')D.toWallet=(S.wallets.find(x=>x.id!==D.walletId)||{}).id;else D.cat=CATS[t][0].id;drawEditor();},
@@ -970,8 +1025,7 @@ const ACT={
   pickEdW:b=>{if(b.dataset.t==='to')D.toWallet=b.dataset.id;else{D.walletId=b.dataset.id;if(D.type==='tr'&&D.toWallet===D.walletId)D.toWallet=(S.wallets.find(x=>x.id!==D.walletId)||{}).id;}closeL(3);drawEditor();},
   edDel:b=>{
     if(!b.classList.contains('armed')){b.classList.add('armed');toast('Нажмите ещё раз, чтобы удалить');setTimeout(()=>{if(b.isConnected)b.classList.remove('armed');},3000);return;}
-    const ex=S.tx.find(t=>t.id===D.id),copy={...ex};S.tx=S.tx.filter(t=>t.id!==ex.id);DB.delTx(ex.id);closeL(2);refresh();
-    toast('Операция удалена','Вернуть',()=>{S.tx.push(copy);DB.putTx(copy);refresh();});},
+    closeL(2);deleteTx(D.id);},
   mprev:()=>{S.month=shiftMonth(S.month,-1);S.limit=40;render();},
   mnext:()=>{S.month=shiftMonth(S.month,1);S.limit=40;render();},
   mnow:()=>{S.month=ym(new Date());render();},
