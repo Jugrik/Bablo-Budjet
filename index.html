@@ -75,7 +75,7 @@ main.wrap{padding-block:6px calc(104px + env(safe-area-inset-bottom,0px))}
 .wcar{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:8px calc(-1 * max(16px,env(safe-area-inset-left,0px))) 0;padding:4px max(16px,env(safe-area-inset-left,0px)) 6px;scrollbar-width:none;scroll-padding:0 max(16px,env(safe-area-inset-left,0px))}
 .wcar::-webkit-scrollbar{display:none}
 .wcard{flex:0 0 84%;max-width:400px;scroll-snap-align:start;border-radius:22px;padding:16px 18px;min-height:156px;display:flex;flex-direction:column;color:#FFFFFF;position:relative;overflow:hidden;text-align:left;cursor:pointer;
-  background:linear-gradient(140deg,color-mix(in srgb,var(--c) 82%,#000) 0%,color-mix(in srgb,var(--c) 45%,#000) 100%);box-shadow:0 10px 24px -12px color-mix(in srgb,var(--c) 70%,transparent);transition:transform .3s var(--ease),opacity .3s}
+  background:linear-gradient(140deg,color-mix(in srgb,var(--c) 82%,#000) 0%,color-mix(in srgb,var(--c) 45%,#000) 100%);transition:transform .3s var(--ease),opacity .3s}
 .wcard::after{content:"";position:absolute;right:-40px;top:-60px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.08)}
 .wcard:not(.on){opacity:.72;transform:scale(.97)}
 .wc-top{display:flex;align-items:center;gap:10px;position:relative;z-index:1}
@@ -87,7 +87,7 @@ main.wrap{padding-block:6px calc(104px + env(safe-area-inset-bottom,0px))}
 .wc-l{margin-top:auto;font-size:13px;opacity:.75;position:relative;z-index:1}
 .wc-b{font-family:var(--round);font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative;z-index:1}
 .wc-f{font-size:13px;opacity:.8;margin-top:4px;position:relative;z-index:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.wcard.add{background:transparent;color:var(--fg2);border:1.5px dashed var(--fg3);box-shadow:none;align-items:center;justify-content:center;gap:8px;flex-basis:44%;font-weight:600;opacity:1;transform:none}
+.wcard.add{background:var(--card);color:var(--fg2);align-items:center;justify-content:center;gap:8px;flex-basis:44%;font-weight:600;opacity:1;transform:none}
 .wcard.add::after{display:none}
 .dots{display:flex;justify-content:center;gap:6px;margin:8px 0 2px}
 .dots i{width:6px;height:6px;border-radius:3px;background:var(--fg3);transition:width .3s var(--ease),background .3s}
@@ -129,7 +129,7 @@ button.row:active{background:var(--fill)}
 .empty .art .i{width:30px;height:30px}
 .empty b{font-family:var(--round);font-size:19px}
 .empty p{margin:0;color:var(--fg2);font-size:15px;line-height:1.45;max-width:32ch}
-.promo{background:var(--card);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px;margin-top:12px;border-left:4px solid var(--accent)}
+.promo{background:var(--card);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px;margin-top:12px}
 .promo b{font-size:17px}
 .promo p{margin:0;color:var(--fg2);font-size:14px;line-height:1.45}
 .promo .acts{display:flex;gap:8px;flex-wrap:wrap}
@@ -146,7 +146,7 @@ button.row:active{background:var(--fill)}
 .tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding-bottom:9px;color:var(--fg2);font-size:10.5px;font-weight:600}
 .tab .i{width:24px;height:24px}
 .tab[aria-current="page"]{color:var(--accent)}
-.addkey{justify-self:center;align-self:center;width:54px;height:54px;border-radius:17px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;transform:translateY(-14px);box-shadow:0 10px 22px -8px color-mix(in srgb,var(--accent) 80%,transparent);transition:transform .2s var(--ease)}
+.addkey{justify-self:center;align-self:center;width:54px;height:54px;border-radius:17px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;transform:translateY(-14px);transition:transform .2s var(--ease)}
 .addkey .i{width:28px;height:28px}
 .addkey:active{transform:translateY(-14px) scale(.92)}
 
@@ -198,7 +198,7 @@ button.row:active{background:var(--fill)}
 .amtp .big small{font-size:28px;color:var(--fg2);margin-left:6px}
 .amtp.shake{animation:shake .4s}
 @keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
-.cgrid{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-auto-columns:calc((100% - 32px)/5);gap:10px 8px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 6px;scrollbar-width:none}
+.cgrid{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-auto-columns:calc((100% - 44px)/5);gap:12px 8px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 6px 8px;margin:0 -6px;scrollbar-width:none;scroll-padding:0 6px}
 .cgrid.one{grid-template-rows:auto}
 .cgrid::-webkit-scrollbar{display:none}
 .cg{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:11px;font-weight:500;color:var(--fg2);scroll-snap-align:start;min-width:0}
@@ -206,7 +206,7 @@ button.row:active{background:var(--fill)}
 .cg .ci{width:46px;height:46px;transition:transform .25s var(--ease),box-shadow .25s,opacity .25s;opacity:.55}
 .cg .ci .i{width:22px;height:22px}
 .cg[aria-pressed="true"]{color:var(--fg);font-weight:700}
-.cg[aria-pressed="true"] .ci{opacity:1;transform:scale(1.06);box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--c)}
+.cg[aria-pressed="true"] .ci{opacity:1;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--c)}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .cell{background:var(--card);border-radius:14px;padding:8px 12px;display:flex;flex-direction:column;gap:2px;text-align:left;min-width:0;position:relative;min-height:52px;justify-content:center}
 .cell .lab{font-size:11px;font-weight:600;color:var(--fg2);text-transform:uppercase;letter-spacing:.05em}
@@ -256,6 +256,19 @@ button.row:active{background:var(--fill)}
 .bhead{display:flex;align-items:center;gap:12px}
 .bhead .ci{width:48px;height:48px}
 .bhead b{font-size:18px}
+
+.colors{display:flex;flex-direction:column;gap:14px;background:var(--card);border-radius:18px;padding:14px}
+.colors .cl{font-size:14px;font-weight:600;color:var(--fg2)}
+.swr{display:flex;flex-wrap:wrap;gap:10px}
+.sw2{width:40px;height:40px;border-radius:50%;background:var(--c);position:relative;flex:none;transition:transform .2s var(--ease)}
+.sw2:active{transform:scale(.92)}
+.sw2[aria-pressed="true"]{box-shadow:0 0 0 2px var(--card),0 0 0 4px var(--fg)}
+.sw2.tone{background:linear-gradient(135deg,var(--b) 0 50%,var(--k) 50% 100%)}
+.sw2.custom{background:conic-gradient(#FF5F57,#FEBC2E,#28C840,#0A84FF,#BF5AF2,#FF5F57)}
+.sw2.custom input{position:absolute;inset:0;width:100%;height:100%;opacity:0;border:0;padding:0;cursor:pointer}
+.sw2.custom.set{background:var(--c)}
+.sw2.custom.set::after{content:"";position:absolute;inset:12px;border-radius:50%;background:conic-gradient(#FF5F57,#FEBC2E,#28C840,#0A84FF,#BF5AF2,#FF5F57)}
+.colors .names{font-size:12px;color:var(--fg2);margin-top:-6px}
 
 /* analytics & budgets */
 .card{background:var(--card);border-radius:20px}
@@ -514,9 +527,26 @@ function seedDemo(){
   return{wallets:[card,cash],tx:out};
 }
 
-/* ================= тема ================= */
+/* ================= тема и цвета ================= */
+const ACCENTS=[['#34D1A6','Мята'],['#0A84FF','Синий'],['#5E5CE6','Индиго'],['#BF5AF2','Фиолетовый'],['#FF375F','Малиновый'],['#FF9F0A','Оранжевый'],['#FFD60A','Жёлтый'],['#30D158','Зелёный'],['#64D2FF','Голубой'],['#E8E8ED','Белый']];
+const TONES=[['graphite','Графит',null,'#0E1012','#181B1F'],['black','Чёрный','#000000','#000000','#161616'],['navy','Ночной синий','#3E63DD'],['plum','Сливовый','#8E4EC6'],['forest','Лесной','#0B8F6E'],['warm','Тёплый','#A0522D'],['rose','Розовый','#D6409F']];
+function hexLum(h){const n=parseInt(h.slice(1),16),c=[n>>16&255,n>>8&255,n&255].map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);});return .2126*c[0]+.7152*c[1]+.0722*c[2];}
+function toneVars(t){
+  if(t==='black')return{l:null,d:'--bg:#000000;--card:#161616;--card2:#1F1F1F;--bar:rgba(0,0,0,.9);'};
+  const T=t==='custom'?S.settings.toneColor:(TONES.find(x=>x[0]===t)||[])[2];
+  if(!T)return{l:null,d:null};
+  return{l:`--bg:color-mix(in srgb,${T} 7%,#F4F5F7);--card2:color-mix(in srgb,${T} 5%,#F8F8FA);--bar:color-mix(in srgb,color-mix(in srgb,${T} 7%,#F4F5F7) 90%,transparent);`,
+         d:`--bg:color-mix(in srgb,${T} 16%,#08090A);--card:color-mix(in srgb,${T} 16%,#18191B);--card2:color-mix(in srgb,${T} 15%,#222326);--bar:color-mix(in srgb,color-mix(in srgb,${T} 16%,#08090A) 92%,transparent);`};
+}
+function applyColors(){
+  let el=document.getElementById('userColors');if(!el){el=document.createElement('style');el.id='userColors';document.head.appendChild(el);}
+  const a=S.settings.accent,tv=toneVars(S.settings.tone||'graphite');
+  let acc='';if(a){const on=hexLum(a)>.45?'#0B0F0D':'#FFFFFF';acc=`--accent:${a};--accent-soft:color-mix(in srgb,${a} 18%,transparent);--on-accent:${on};`;}
+  const light=acc+(tv.l||''),dark=acc+(tv.d||'');
+  el.textContent=(light?`:root{${light}}`:'')+(dark?`@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){${dark}}}:root[data-theme="dark"]{${dark}}`:'');
+}
 let themeSet=false;
-function applyTheme(){const t=S.settings.theme,r=document.documentElement;
+function applyTheme(){applyColors();const t=S.settings.theme,r=document.documentElement;
   if(t==='light'||t==='dark'){r.setAttribute('data-theme',t);themeSet=true;}else if(themeSet){r.removeAttribute('data-theme');themeSet=false;}}
 function growBars(root){raf2(()=>{(root||document).querySelectorAll('.bar i[data-w]').forEach(i=>i.style.width=i.dataset.w+'%');});}
 
@@ -546,7 +576,7 @@ function walletCard(w){
   const id=w.id,on=curW()===id,b=balance(id);
   let foot;
   if(id==='all'){const n=S.wallets.length;foot=n+' '+(n===1?'счёт':n<5?'счёта':'счетов');}
-  else{const m=inMonth(S.tx.filter(t=>t.walletId===id&&t.type!=='tr'),S.month);foot=`${monthName(S.month)}: +${short(sumBy(m,'inc'))} / −${short(sumBy(m,'exp'))}`;}
+  else{const m=inMonth(S.tx.filter(t=>t.walletId===id&&t.type!=='tr'),S.month);{const i=sumBy(m,'inc'),e=sumBy(m,'exp');foot=`${monthName(S.month)}: доход ${i?'+'+short(i):'0'}, расход ${e?'−'+short(e):'0'}`;}}
   return `<div class="wcard ${on?'on':''}" data-a="selCard" data-id="${id}" style="--c:${w.color}" role="button" tabindex="0" aria-label="${esc(w.name)}">
     <div class="wc-top"><span class="wc-ic">${ic(w.icon)}</span><span class="wc-n">${esc(w.name)}</span>${id!=='all'?`<button class="wc-ed" data-a="walletEdit" data-id="${id}" aria-label="Изменить счёт">${ic('pen')}</button>`:`<button class="wc-ed" data-a="openWallets" aria-label="Список счетов">${ic('down')}</button>`}</div>
     <div class="wc-l">Остаток</div><div class="wc-b num">${signed(b)}</div><div class="wc-f">${foot}</div></div>`;
@@ -659,6 +689,17 @@ function renderSettings(){
     </div>
     <div class="sec">Оформление</div>
     <div class="seg" role="group" aria-label="Тема">${[['system','Как в системе'],['light','Светлая'],['dark','Тёмная']].map(([k,l])=>`<button data-a="theme" data-v="${k}" aria-pressed="${t===k}">${l}</button>`).join('')}</div>
+    <div class="sec">Цвета</div>
+    <div class="colors">
+      <span class="cl">Акцент — кнопки, выделения, активные вкладки</span>
+      <div class="swr">${ACCENTS.map(([c,n])=>`<button class="sw2" data-a="accent" data-v="${c}" style="--c:${c}" aria-label="${n}" aria-pressed="${(S.settings.accent||'')===c}"></button>`).join('')}
+        <label class="sw2 custom ${S.settings.accent&&!ACCENTS.some(x=>x[0]===S.settings.accent)?'set':''}" style="--c:${S.settings.accent||'#34D1A6'}" aria-label="Свой цвет акцента" aria-pressed="${!!S.settings.accent&&!ACCENTS.some(x=>x[0]===S.settings.accent)}"><input type="color" id="accCustom" value="${S.settings.accent||'#34D1A6'}"></label></div>
+      <span class="cl">Фон — общий тон экранов</span>
+      <div class="swr">${TONES.map(([k,n,T,b,c])=>`<button class="sw2 tone" data-a="tone" data-v="${k}" style="--b:${b||'color-mix(in srgb,'+T+' 16%,#08090A)'};--k:${c||'color-mix(in srgb,'+T+' 30%,#18191B)'}" aria-label="${n}" aria-pressed="${(S.settings.tone||'graphite')===k}"></button>`).join('')}
+        <label class="sw2 custom ${S.settings.tone==='custom'?'set':''}" style="--c:${S.settings.toneColor||'#3E63DD'}" aria-label="Свой тон фона" aria-pressed="${S.settings.tone==='custom'}"><input type="color" id="toneCustom" value="${S.settings.toneColor||'#3E63DD'}"></label></div>
+      <span class="names">Радужный кружок — любой свой цвет. Тон фона заметнее в тёмной теме.</span>
+      <button class="btn soft" data-a="resetColors" style="height:40px">Вернуть стандартные цвета</button>
+    </div>
     <div class="sec">Резервная копия</div>
     <div class="list">
       <button class="setrow link" data-a="export"><span class="tx">Сохранить копию в файл</span></button>
@@ -673,6 +714,11 @@ function renderSettings(){
     </div>
     <button class="btn danger" data-a="wipe">Удалить все данные</button>
   </section>`;
+  const ac=$('#accCustom'),tc=$('#toneCustom');
+  ac.addEventListener('input',()=>{S.settings.accent=ac.value.toUpperCase();applyColors();});
+  ac.addEventListener('change',()=>{saveSettings();renderSettings();});
+  tc.addEventListener('input',()=>{S.settings.tone='custom';S.settings.toneColor=tc.value;applyColors();});
+  tc.addEventListener('change',()=>{saveSettings();renderSettings();});
 }
 
 /* ================= слои ================= */
@@ -936,6 +982,9 @@ const ACT={
   bSave:b=>budgetSave(b.dataset.id),
   bDel:b=>{delete S.budgets[b.dataset.id];saveBudgets();closeL(3);refresh();toast('Лимит убран');},
   theme:b=>{S.settings.theme=b.dataset.v;saveSettings();applyTheme();$$('[data-a="theme"]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===S.settings.theme));},
+  accent:b=>{S.settings.accent=b.dataset.v;saveSettings();applyColors();renderSettings();},
+  tone:b=>{S.settings.tone=b.dataset.v;saveSettings();applyColors();renderSettings();},
+  resetColors:()=>{S.settings.accent=null;S.settings.tone='graphite';saveSettings();applyColors();renderSettings();toast('Стандартные цвета');},
   export:()=>exportData(),
   import:()=>{const i=$('#fImport');i.onchange=e=>{const f=e.target.files[0];if(f)importFile(f);i.value='';};i.click();},
   wipe:b=>arm(b,'Нажмите ещё раз — удалить всё',()=>{resetAll();S.tab='home';render();toast('Все данные удалены');})
