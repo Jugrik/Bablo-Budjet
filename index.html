@@ -119,7 +119,8 @@ button.row:active{background:var(--fill)}
 .sw .row{background:var(--card);z-index:1;touch-action:pan-y;transition:transform .28s var(--ease)}
 .sw .row.drag{transition:none}
 .sw .row:active{background:var(--card)}
-.swbg{position:absolute;inset:0;display:flex;justify-content:flex-end;background:var(--neg)}
+.swbg{position:absolute;inset:0;display:flex;justify-content:flex-end;background:var(--neg);visibility:hidden}
+.sw.rev .swbg{visibility:visible}
 .swdel{width:92px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#FFFFFF;font-size:12px;font-weight:600;transition:width .2s var(--ease)}
 .swdel .i{width:22px;height:22px}
 .sw.full .swdel{width:100%}
@@ -128,8 +129,8 @@ button.row:active{background:var(--fill)}
 .row .t2{font-size:13px;color:var(--fg2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row .am{font-family:var(--round);font-size:16px;font-weight:700;white-space:nowrap}
 .am.pos{color:var(--pos)} .am.trc{color:var(--tr)}
-.row.new{animation:flash 1.4s var(--ease)}
-@keyframes flash{0%{background:var(--accent-soft)}100%{background:transparent}}
+.row.new::after{content:"";position:absolute;inset:0;background:var(--accent-soft);pointer-events:none;animation:flash 1.4s var(--ease) forwards}
+@keyframes flash{from{opacity:1}to{opacity:0}}
 .ci{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#FFFFFF}
 .ci .i{width:19px;height:19px}
 .more{display:block;width:100%;padding:16px;color:var(--accent);font-weight:600;text-align:center}
@@ -948,13 +949,14 @@ function refresh(){render();if(S.sheet==='wallets')drawWallets();else if(S.sheet
 
 /* ================= свайп для удаления ================= */
 const SWW=92;let swOpen=null,swJust=0;
-function swClose(except){if(swOpen&&swOpen!==except){const r=swOpen.querySelector('.row');r.style.transform='';swOpen.classList.remove('open');swOpen=null;}}
+function hideRev(w){setTimeout(()=>{if(!w.classList.contains('open')&&!w.querySelector('.row.drag'))w.classList.remove('rev');},300);}
+function swClose(except){if(swOpen&&swOpen!==except){const w=swOpen,r=w.querySelector('.row');r.style.transform='';w.classList.remove('open');swOpen=null;hideRev(w);}}
 function deleteTx(id,wrap){
   const ex=S.tx.find(t=>t.id===id);if(!ex)return;const copy={...ex};
   const done=()=>{S.tx=S.tx.filter(t=>t.id!==id);DB.delTx(id);swOpen=null;refresh();
     toast('Операция удалена','Вернуть',()=>{S.tx.push(copy);DB.putTx(copy);refresh();});};
   if(wrap&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
-    const h=wrap.offsetHeight;wrap.style.height=h+'px';
+    const h=wrap.offsetHeight;wrap.classList.add('rev');wrap.style.height=h+'px';
     const r=wrap.querySelector('.row');r.style.transform='translateX(-100%)';
     requestAnimationFrame(()=>{wrap.style.height='0px';wrap.style.opacity='0';});
     setTimeout(done,300);
@@ -971,7 +973,7 @@ function deleteTx(id,wrap){
   document.addEventListener('pointermove',e=>{
     if(!st||e.pointerId!==st.id)return;
     const dx=e.clientX-st.x,dy=e.clientY-st.y;
-    if(st.lock===null){if(Math.abs(dx)<8&&Math.abs(dy)<8)return;st.lock=Math.abs(dx)>Math.abs(dy)?'h':'v';if(st.lock==='h')st.row.classList.add('drag');}
+    if(st.lock===null){if(Math.abs(dx)<8&&Math.abs(dy)<8)return;st.lock=Math.abs(dx)>Math.abs(dy)?'h':'v';if(st.lock==='h'){st.row.classList.add('drag');st.wrap.classList.add('rev');}}
     if(st.lock!=='h')return;
     let x=Math.min(0,st.base+dx);const w=st.wrap.offsetWidth;
     if(x<-SWW)x=-SWW+(x+SWW)*.85;
@@ -985,7 +987,7 @@ function deleteTx(id,wrap){
     const w=s.wrap.offsetWidth;
     if(s.dx<-w*.6){deleteTx(s.wrap.dataset.id,s.wrap);return;}
     if(s.dx<-SWW/2){s.row.style.transform=`translateX(${-SWW}px)`;s.wrap.classList.add('open');s.wrap.classList.remove('full');swOpen=s.wrap;}
-    else{s.row.style.transform='';s.wrap.classList.remove('open','full');if(swOpen===s.wrap)swOpen=null;}
+    else{s.row.style.transform='';s.wrap.classList.remove('open','full');if(swOpen===s.wrap)swOpen=null;hideRev(s.wrap);}
   };
   document.addEventListener('pointerup',end,{passive:true});
   document.addEventListener('pointercancel',e=>{if(st&&st.lock==='h')end(e);else st=null;},{passive:true});
