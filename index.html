@@ -267,11 +267,11 @@ button.row:active{background:var(--fill)}
 .picks .icb{background:var(--card);color:var(--fg)}
 .prev{display:flex;justify-content:center;padding:4px 0}
 .prev .wcard{flex:none;width:100%;max-width:none;min-height:120px;cursor:default}
-.bigin{display:flex;justify-content:center;align-items:baseline;gap:6px;padding:6px 0;background:var(--card);border-radius:16px}
-.bigin input{font-family:var(--round);font-size:40px;font-weight:700;border:0;background:transparent;color:var(--fg);text-align:center;width:7ch;max-width:75%;font-variant-numeric:tabular-nums;caret-color:var(--accent)}
+.bigin{display:flex;justify-content:center;align-items:baseline;gap:8px;padding:10px 20px;background:var(--card);border-radius:16px}
+.bigin input{font-family:var(--round);font-size:clamp(28px,9vw,40px);font-weight:700;border:0;background:transparent;color:var(--fg);text-align:center;flex:0 1 auto;min-width:0;width:4ch;max-width:100%;padding:0;font-variant-numeric:tabular-nums;caret-color:var(--accent)}
 .bigin input:focus{outline:none}
 .bigin input::placeholder{color:var(--fg3)}
-.bigin span{font-size:26px;color:var(--fg2);font-weight:700}
+.bigin span{font-size:clamp(20px,6vw,26px);color:var(--fg2);font-weight:700;flex:none}
 .bhead{display:flex;align-items:center;gap:12px}
 .bhead .ci{width:48px;height:48px}
 .bhead b{font-size:18px}
@@ -308,7 +308,12 @@ button.row:active{background:var(--fill)}
 .brow + .brow::before{content:"";position:absolute;top:0;right:14px;left:14px;border-top:1px solid var(--sep)}
 .brow .h{display:flex;align-items:center;gap:12px}
 .brow .h .nm{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
-.brow .h .nm b{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brow .h .nm b{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;max-width:100%}
+.brow .h > .chip{flex:none}
+.glist .brow .h .nm b{white-space:normal;overflow:visible;line-height:1.25}
+.glist .brow .h .nm span{line-height:1.3}
+.glist .chip{min-width:62px;text-align:center}
+.glist .brow .h{align-items:center}
 .brow .h .nm span{font-size:12px;color:var(--fg2)}
 .brow .h .v{font-family:var(--round);font-weight:700;white-space:nowrap}
 .brow .meta{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--fg2)}
@@ -356,7 +361,9 @@ body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)
 .preset .ci{width:28px;height:28px}.preset .ci .i{width:15px;height:15px}
 .field select{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;font-size:16px;text-align:right;text-align-last:right;-webkit-appearance:none;appearance:none;padding:12px 0}
 .field select:focus{outline:none}
-.field input[type=date]{text-align:right;-webkit-appearance:none;appearance:none;min-height:24px}
+.field input[type=date]{display:block;text-align:right;-webkit-appearance:none;appearance:none;min-height:24px;line-height:24px}
+.field input[type=date]::-webkit-date-and-time-value{text-align:right;margin:0}
+.field input[type=date]::-webkit-datetime-edit{padding:0}
 .tg{width:51px;height:31px;border-radius:16px;background:var(--fill);position:relative;flex:none;transition:background .25s}
 .tg::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.25);transition:transform .25s var(--ease)}
 .tg[aria-checked="true"]{background:var(--accent)}
@@ -391,7 +398,8 @@ body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)
 .mini .cnt.over{background:var(--neg);color:#FFFFFF}
 .mini .go{width:16px;height:16px;color:var(--fg2)}
 .carcard{flex:none;width:100%;max-width:none;cursor:default;min-height:150px}
-.carcard .row2{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;position:relative;z-index:1;margin-top:auto}
+.carcard .row2{display:flex;align-items:center;justify-content:space-between;gap:10px;position:relative;z-index:1;margin-top:8px}
+.carcard .wc-l{margin-top:14px}
 .carcard .kmbtn{height:36px;padding:0 12px;border-radius:11px;background:rgba(255,255,255,.18);color:#FFFFFF;font-size:14px;font-weight:600;white-space:nowrap}
 .carsw{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
 .carsw::-webkit-scrollbar{display:none}
@@ -688,7 +696,7 @@ function partLast(car,k){
 }
 function partState(car,k){
   const cfg=partCfg(car,k),last=partLast(car,k);
-  if(!last)return{cfg,st:'none',frac:0,text:'Укажите, когда меняли последний раз'};
+  if(!last)return{cfg,st:'none',frac:0,text:'Нет данных о последней замене'};
   let fk=0,fd=0,kmLeft=null,dLeft=null,due=null;
   if(cfg.km&&last.km!=null){kmLeft=last.km+cfg.km-car.mileage;fk=(car.mileage-last.km)/cfg.km;}
   if(cfg.mo&&last.date){due=addMonths(last.date,cfg.mo);dLeft=daysUntil(due);fd=1-dLeft/(cfg.mo*30.44);}
@@ -884,7 +892,7 @@ function drawGarage(first){
     const groups=GPARTS.map(([g,list])=>{const rows=list.map(x=>x[0]).filter(k=>partCfg(car,k).on).map(k=>({k,s:partState(car,k)}));return{g,rows};}).filter(x=>x.rows.length);
     const colr=st=>st==='over'?'var(--neg)':st==='warn'?'var(--warn)':st==='ok'?'var(--pos)':'var(--fg3)';
     body=`<button class="btn main" data-a="svcNew" style="width:100%;height:50px">${ic('wrench')}Записать обслуживание</button>`+
-      groups.map(({g,rows})=>`<div class="sec">${g}</div><div class="list">${rows.sort((a,b)=>b.s.frac-a.s.frac).map(({k,s})=>`<button class="brow ${s.st==='none'?'none':''}" data-a="partOpen" data-k="${k}" style="--c:${colr(s.st)}"><span class="h">${ciC({icon:s.cfg.i,color:'#4C5563'}).replace('--c:#4C5563','--c:'+(s.st==='over'?'var(--neg)':s.st==='warn'?'var(--warn)':'#4B5563'))}<span class="nm"><b>${esc(s.cfg.n)}</b><span>${esc(s.text)}</span></span>${s.st==='over'?'<span class="chip over">Пора</span>':s.st==='warn'?'<span class="chip warn">Скоро</span>':s.st==='none'?'<span class="chip mute">Указать</span>':''}</span><span class="bar"><i data-w="${Math.min(100,Math.max(s.st==='none'?0:3,s.frac*100))}"></i></span></button>`).join('')}</div>`).join('')+
+      groups.map(({g,rows})=>`<div class="sec">${g}</div><div class="list glist">${rows.sort((a,b)=>b.s.frac-a.s.frac).map(({k,s})=>`<button class="brow ${s.st==='none'?'none':''}" data-a="partOpen" data-k="${k}" style="--c:${colr(s.st)}"><span class="h">${ciC({icon:s.cfg.i,color:'#4C5563'}).replace('--c:#4C5563','--c:'+(s.st==='over'?'var(--neg)':s.st==='warn'?'var(--warn)':'#4B5563'))}<span class="nm"><b>${esc(s.cfg.n)}</b><span>${esc(s.text)}</span></span>${s.st==='over'?'<span class="chip over">Пора</span>':s.st==='warn'?'<span class="chip warn">Скоро</span>':s.st==='none'?'<span class="chip mute">Указать</span>':''}</span><span class="bar"><i data-w="${Math.min(100,Math.max(s.st==='none'?0:3,s.frac*100))}"></i></span></button>`).join('')}</div>`).join('')+
       `<button class="btn soft" data-a="partsSetup" style="width:100%;margin-top:4px">Настроить список расходников</button><p class="note">Интервалы стоят средние по рекомендациям производителей. Для вашей машины их можно изменить: нажмите на расходник.</p>`;
   }else if(S.gTab==='docs'){
     body=`<div class="list">${GDOCS.map(([k,n,i])=>{const d=docState(car,k);return `<button class="row" data-a="docOpen" data-k="${k}">${ciC({icon:i,color:d.st==='over'?'#E5484D':d.st==='warn'?'#E08A00':'#4B5563'})}<span class="tx"><span class="t1">${esc(n)}</span><span class="t2">${esc(d.text)}</span></span>${d.st==='over'?'<span class="chip over">Истёк</span>':d.st==='warn'?'<span class="chip warn">Скоро</span>':d.st==='none'?'<span class="chip mute">Указать</span>':''}</button>`;}).join('')}</div><p class="note">Напоминание появится за 30 дней до окончания. При продлении можно сразу записать расход в бюджет.</p>`;
@@ -900,7 +908,7 @@ function drawGarage(first){
     ${cars.length>1?`<div class="carsw">${cars.map(c=>`<button data-a="carPick" data-id="${c.id}" aria-pressed="${c.id===car.id}">${esc(c.name)}</button>`).join('')}</div>`:''}
     <div class="wcard on carcard" style="--c:${car.color||'#3E63DD'}">
       <div class="wc-top"><span class="wc-ic">${ic('car')}</span><span class="wc-n">${esc(car.name)}${car.year?' · '+esc(car.year):''}</span><button class="wc-ed" data-a="carEdit" data-id="${car.id}" aria-label="Изменить машину">${ic('pen')}</button></div>
-      <div class="row2"><div><div class="wc-l">Пробег</div><div class="wc-b num">${nfKm(car.mileage)}</div><div class="wc-f">${car.plate?esc(car.plate)+' · ':''}обновлён ${shortDate(car.mileageDate||today()).toLowerCase()}</div></div><button class="kmbtn" data-a="kmEdit">Обновить пробег</button></div>
+      <div class="wc-l" style="margin-top:14px">Пробег</div><div class="wc-b num">${nfKm(car.mileage)}</div><div class="row2"><div class="wc-f" style="margin:0">${car.plate?esc(car.plate)+' · ':''}обновлён ${shortDate(car.mileageDate||today()).toLowerCase()}</div><button class="kmbtn" data-a="kmEdit">Обновить пробег</button></div>
     </div>
     <div class="seg" role="group" aria-label="Раздел"><button data-a="gTab" data-t="service" aria-pressed="${S.gTab==='service'}">ТО${pc?' · '+pc:''}</button><button data-a="gTab" data-t="docs" aria-pressed="${S.gTab==='docs'}">Документы${dc?' · '+dc:''}</button><button data-a="gTab" data-t="history" aria-pressed="${S.gTab==='history'}">История</button></div>
     ${body}
@@ -937,7 +945,7 @@ function carSave(){
 }
 function openKm(){const c=curCar();
   openL(3,`<div class="lhead"><button class="txtbtn l" data-a="close" data-l="3">Отмена</button><h2>Пробег</h2><button class="txtbtn b r" data-a="kmSave">Готово</button></div>
-  <div class="stack"><div class="bigin"><input id="kmIn" inputmode="numeric" autocomplete="off" placeholder="${Math.round(c.mileage)}" aria-label="Пробег"><span>км</span></div>
+  <div class="stack"><div class="bigin"><input id="kmIn" inputmode="numeric" autocomplete="off" placeholder="${nf.format(Math.round(c.mileage))}" aria-label="Пробег"><span>км</span></div>
   <p class="note">Сейчас: ${nfKm(c.mileage)}, указан ${shortDate(c.mileageDate||today()).toLowerCase()}. Посмотрите одометр и впишите текущее значение.</p></div>`,
   el=>{const i=el.querySelector('#kmIn');i.addEventListener('keydown',e=>{if(e.key==='Enter')kmSave();});setTimeout(()=>{try{i.focus();}catch(e){}},300);});}
 function kmSave(){const c=curCar(),v=parseAmount($('#kmIn').value);if(!(v>0)){toast('Введите пробег');return;}
@@ -1049,6 +1057,9 @@ function shareHist(){
 function renderMaybe(){if(S.tab==='home')renderHomeBody();}
 function refreshBg(){render();}
 
+function fitBig(i){const v=i.value||i.placeholder||'0';i.style.width=Math.max(2,v.length+0.4)+'ch';}
+document.addEventListener('input',e=>{if(e.target.matches&&e.target.matches('.bigin input'))fitBig(e.target);});
+new MutationObserver(()=>$$('.bigin input').forEach(i=>{if(!i.dataset.fit){i.dataset.fit=1;fitBig(i);}})).observe(document.body,{childList:true,subtree:true});
 function growBars(root){raf2(()=>{(root||document).querySelectorAll('.bar i[data-w]').forEach(i=>i.style.width=i.dataset.w+'%');});}
 
 /* ================= вкладки ================= */
@@ -1584,7 +1595,7 @@ const ACT={
   more:()=>{S.limit+=60;renderHomeBody();},
   stype:b=>{S.statType=b.dataset.t;renderStats();},
   budgetEdit:b=>openBudgetEdit(b.dataset.id),
-  bQuick:b=>{$('#bLim').value=nf.format(+b.dataset.v);},
+  bQuick:b=>{const i=$('#bLim');i.value=nf.format(+b.dataset.v);fitBig(i);},
   bSave:b=>budgetSave(b.dataset.id),
   bDel:b=>{delete S.budgets[b.dataset.id];saveBudgets();closeL(3);refresh();toast('Лимит убран');},
   theme:b=>{S.settings.theme=b.dataset.v;saveSettings();applyTheme();$$('[data-a="theme"]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===S.settings.theme));},
