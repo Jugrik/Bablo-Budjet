@@ -18,16 +18,16 @@
 /* Layout: tabbed app — swipeable wallet cards on top, month summary tiles, day-grouped operations; bottom tab bar with a raised square add key; bottom-sheet editor with category grid and flat keypad */
 /* Layout: monochrome, serious — black & white surfaces with hairlines, grey-scale data, colour only for warnings; tab bar with white add key */
 :root{
-  --bg:#F4F4F5; --card:#FFFFFF; --card2:#F2F2F3; --fg:#0A0A0A; --fg2:#6B6B70; --fg3:#C9C9CE; --sep:rgba(10,10,10,.09); --fill:rgba(10,10,10,.05); --accent:#0A0A0A; --accent-soft:rgba(10,10,10,.07); --on-accent:#FFFFFF; --pos:#0A0A0A; --neg:#D92D20; --warn:#B76E00; --exp:#0A0A0A; --inc:#0A0A0A; --tr:#0A0A0A; --bar:rgba(244,244,245,.92); --scrim:rgba(0,0,0,.35); --toast:#0A0A0A; --toast-fg:#FFFFFF; --toast-a:#FFFFFF; --allcard:#0A0A0A; --wcard:#0A0A0A; --wcard2:#1C1C1E; --g1:#0A0A0A; --g2:#3A3A3C; --g3:#5C5C60; --g4:#7E7E83; --g5:#A0A0A5; --g6:#BDBDC2; --g7:#D2D2D6; --g8:#E4E4E8;
+  --bg:#F4F4F5; --card:#FFFFFF; --card2:#F2F2F3; --fg:#0A0A0A; --fg2:#6B6B70; --fg3:#C9C9CE; --sep:rgba(10,10,10,.09); --fill:rgba(10,10,10,.05); --accent:#0A0A0A; --accent-soft:rgba(10,10,10,.07); --on-accent:#FFFFFF; --pos:#14A44D; --neg:#D92D20; --warn:#B76E00; --exp:#E5484D; --inc:#14A44D; --tr:#3E63DD; --hi:rgba(255,255,255,.9); --shadow:0 1px 2px rgba(0,0,0,.05),0 10px 28px -14px rgba(0,0,0,.18); --bar:rgba(244,244,245,.92); --scrim:rgba(0,0,0,.35); --toast:#0A0A0A; --toast-fg:#FFFFFF; --toast-a:#FFFFFF; --allcard:#0A0A0A; --wcard:#0A0A0A; --wcard2:#1C1C1E; --g1:#0A0A0A; --g2:#3A3A3C; --g3:#5C5C60; --g4:#7E7E83; --g5:#A0A0A5; --g6:#BDBDC2; --g7:#D2D2D6; --g8:#E4E4E8;
   --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;
   --round:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;
   --ease:cubic-bezier(.22,.8,.24,1);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#000000; --card:#111112; --card2:#1A1A1C; --fg:#F4F4F5; --fg2:#8D8D93; --fg3:#3A3A3D; --sep:rgba(255,255,255,.09); --fill:rgba(255,255,255,.06); --accent:#F4F4F5; --accent-soft:rgba(255,255,255,.1); --on-accent:#000000; --pos:#F4F4F5; --neg:#FF5A4F; --warn:#E3A33B; --exp:#F4F4F5; --inc:#F4F4F5; --tr:#F4F4F5; --bar:rgba(0,0,0,.9); --scrim:rgba(0,0,0,.65); --toast:#F4F4F5; --toast-fg:#000000; --toast-a:#000000; --allcard:#1C1C1E; --wcard:#161618; --wcard2:#060606; --g1:#F4F4F5; --g2:#C8C8CC; --g3:#A2A2A7; --g4:#7E7E83; --g5:#606064; --g6:#4A4A4D; --g7:#38383B; --g8:#2A2A2C; color-scheme:dark;
+  --bg:#000000; --card:#111112; --card2:#1A1A1C; --fg:#F4F4F5; --fg2:#8D8D93; --fg3:#3A3A3D; --sep:rgba(255,255,255,.09); --fill:rgba(255,255,255,.06); --accent:#F4F4F5; --accent-soft:rgba(255,255,255,.1); --on-accent:#000000; --pos:#3DDC84; --neg:#FF5A4F; --warn:#E3A33B; --exp:#FF6B63; --inc:#3DDC84; --tr:#6E8BFF; --hi:rgba(255,255,255,.07); --shadow:0 1px 0 rgba(0,0,0,.6),0 14px 30px -18px rgba(0,0,0,.9); --bar:rgba(0,0,0,.9); --scrim:rgba(0,0,0,.65); --toast:#F4F4F5; --toast-fg:#000000; --toast-a:#000000; --allcard:#1C1C1E; --wcard:#161618; --wcard2:#060606; --g1:#F4F4F5; --g2:#C8C8CC; --g3:#A2A2A7; --g4:#7E7E83; --g5:#606064; --g6:#4A4A4D; --g7:#38383B; --g8:#2A2A2C; color-scheme:dark;
 }}
 :root[data-theme="dark"]{
-  --bg:#000000; --card:#111112; --card2:#1A1A1C; --fg:#F4F4F5; --fg2:#8D8D93; --fg3:#3A3A3D; --sep:rgba(255,255,255,.09); --fill:rgba(255,255,255,.06); --accent:#F4F4F5; --accent-soft:rgba(255,255,255,.1); --on-accent:#000000; --pos:#F4F4F5; --neg:#FF5A4F; --warn:#E3A33B; --exp:#F4F4F5; --inc:#F4F4F5; --tr:#F4F4F5; --bar:rgba(0,0,0,.9); --scrim:rgba(0,0,0,.65); --toast:#F4F4F5; --toast-fg:#000000; --toast-a:#000000; --allcard:#1C1C1E; --wcard:#161618; --wcard2:#060606; --g1:#F4F4F5; --g2:#C8C8CC; --g3:#A2A2A7; --g4:#7E7E83; --g5:#606064; --g6:#4A4A4D; --g7:#38383B; --g8:#2A2A2C; color-scheme:dark;
+  --bg:#000000; --card:#111112; --card2:#1A1A1C; --fg:#F4F4F5; --fg2:#8D8D93; --fg3:#3A3A3D; --sep:rgba(255,255,255,.09); --fill:rgba(255,255,255,.06); --accent:#F4F4F5; --accent-soft:rgba(255,255,255,.1); --on-accent:#000000; --pos:#3DDC84; --neg:#FF5A4F; --warn:#E3A33B; --exp:#FF6B63; --inc:#3DDC84; --tr:#6E8BFF; --hi:rgba(255,255,255,.07); --shadow:0 1px 0 rgba(0,0,0,.6),0 14px 30px -18px rgba(0,0,0,.9); --bar:rgba(0,0,0,.9); --scrim:rgba(0,0,0,.65); --toast:#F4F4F5; --toast-fg:#000000; --toast-a:#000000; --allcard:#1C1C1E; --wcard:#161618; --wcard2:#060606; --g1:#F4F4F5; --g2:#C8C8CC; --g3:#A2A2A7; --g4:#7E7E83; --g5:#606064; --g6:#4A4A4D; --g7:#38383B; --g8:#2A2A2C; color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -405,7 +405,7 @@ body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)
 .linkbtn{color:var(--accent);font-weight:600;font-size:14px;padding:8px 4px}
 /* ===== монохром ===== */
 .lt{font-weight:700;letter-spacing:-.025em}
-.list,.card,.st,.promo,.mini,.form,.cell,.soon,.alertrow,.gstat > div,.allrow,.colors{box-shadow:inset 0 0 0 1px var(--sep)}
+.list,.card,.st,.promo,.mini,.form,.cell,.soon,.alertrow,.gstat > div,.allrow,.colors{background-image:linear-gradient(180deg,color-mix(in srgb,var(--fg) 3%,transparent),transparent 60%);box-shadow:inset 0 1px 0 var(--hi),inset 0 0 0 1px var(--sep),var(--shadow)}
 .list,.card,.promo,.mini,.soon,.form,.colors{border-radius:14px}
 .st{border-radius:14px}
 .cell{border-radius:12px}
@@ -416,20 +416,24 @@ body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)
 .kp{border-radius:14px}
 .layer{border-radius:18px 18px 0 0}
 .seg{border-radius:10px}.seg button{border-radius:8px}
-.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg);box-shadow:none}
-.ci{background:var(--card2)!important;color:var(--fg)!important;border-radius:11px;box-shadow:inset 0 0 0 1px var(--sep)}
+.seg button[aria-pressed="true"]{background:linear-gradient(180deg,color-mix(in srgb,var(--fg) 88%,var(--bg)),var(--fg));color:var(--bg);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 10px -6px rgba(0,0,0,.6)}
+.ci{background:linear-gradient(160deg,color-mix(in srgb,var(--c) 30%,var(--card2)),color-mix(in srgb,var(--c) 12%,var(--card2)));color:color-mix(in srgb,var(--c) 85%,var(--fg));border-radius:11px;box-shadow:inset 0 1px 0 var(--hi),inset 0 0 0 1px color-mix(in srgb,var(--c) 22%,transparent)}
 .cg .ci{opacity:1}
-.cg[aria-pressed="true"] .ci{background:var(--fg)!important;color:var(--bg)!important;box-shadow:none;transform:none}
+.cg[aria-pressed="true"] .ci{background:linear-gradient(160deg,color-mix(in srgb,var(--c) 85%,#FFFFFF),var(--c));color:#FFFFFF;box-shadow:0 0 0 2px var(--bg),0 0 0 3.5px var(--fg),0 6px 14px -6px var(--c);transform:none}
 .cg[aria-pressed="true"]{color:var(--fg)}
-.am.pos,.pos{color:var(--fg)}
+.am.pos,.pos{color:var(--pos)}
 .am.trc{color:var(--fg2)}
-.st .dot{background:var(--card2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--sep)}
-.amtp{background:var(--card)!important;box-shadow:inset 0 0 0 1px var(--sep);border-radius:14px}
+.st .dot{background:color-mix(in srgb,var(--c) 16%,var(--card2));color:var(--c);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 22%,transparent)}
+.amtp{background:linear-gradient(160deg,color-mix(in srgb,var(--c) 16%,var(--card)) 0%,var(--card) 70%)!important;box-shadow:inset 0 1px 0 var(--hi),inset 0 0 0 1px var(--sep),var(--shadow);border-radius:14px}
 .tseg button[aria-pressed="true"]{color:var(--bg);background:var(--fg)}
-.wcard{background:linear-gradient(155deg,var(--wcard2) 0%,var(--wcard) 100%)!important;color:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)!important;border-radius:18px}
-.wcard::after{display:none}
-.wcard .wc-ic{background:rgba(255,255,255,.08);color:color-mix(in srgb,var(--c) 75%,#FFFFFF);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-.wcard[data-id="all"] .wc-ic{color:#FFFFFF}
+.wcard{background:radial-gradient(120% 95% at 100% 0%,color-mix(in srgb,var(--c) 55%,transparent) 0%,transparent 58%),radial-gradient(90% 70% at 0% 100%,color-mix(in srgb,var(--c) 22%,transparent) 0%,transparent 60%),linear-gradient(155deg,#202024 0%,#0B0B0C 100%)!important;color:#FFFFFF;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.08),0 18px 34px -18px rgba(0,0,0,.75),0 10px 30px -18px color-mix(in srgb,var(--c) 70%,transparent)!important;border-radius:18px;isolation:isolate}
+.wcard::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 38%);pointer-events:none;z-index:0}
+.wcard::after,.sheen::after{content:"";position:absolute;top:0;bottom:0;left:0;right:auto;width:60%;height:auto;border-radius:0;background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.0) 20%,rgba(255,255,255,.16) 48%,rgba(255,255,255,.04) 60%,transparent 80%);transform:translateX(-160%) skewX(-12deg);animation:sheen 7s cubic-bezier(.4,0,.2,1) infinite;pointer-events:none;z-index:0;display:block}
+.wcard:nth-child(2)::after{animation-delay:1.2s}.wcard:nth-child(3)::after{animation-delay:2.4s}.wcard:nth-child(4)::after{animation-delay:3.6s}
+@keyframes sheen{0%{transform:translateX(-160%) skewX(-12deg)}55%,100%{transform:translateX(260%) skewX(-12deg)}}
+.wcard.add::before,.wcard.add::after{display:none}
+.wcard .wc-ic{background:linear-gradient(160deg,color-mix(in srgb,var(--c) 70%,#FFFFFF 0%),color-mix(in srgb,var(--c) 55%,#000));color:#FFFFFF;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 4px 10px -4px color-mix(in srgb,var(--c) 80%,transparent)}
+.wcard[data-id="all"] .wc-ic{background:rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
 .wcard .wc-ed,.carcard .kmbtn{background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
 .wcard .wc-l{opacity:.6;text-transform:uppercase;letter-spacing:.08em;font-size:11px;font-weight:600}
 .wcard .wc-b{font-weight:600;letter-spacing:-.03em}
@@ -440,8 +444,12 @@ body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)
 .tab[aria-current="page"]{color:var(--fg)}
 .tab{color:var(--g5)}
 .tab[aria-current="page"]{color:var(--fg)!important}
-.addkey{border-radius:15px;background:var(--accent);color:var(--on-accent)}
-.mini .ap{background:#0A0A0A;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);border-radius:12px}
+.addkey{border-radius:15px;background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#FFFFFF),var(--accent) 55%,color-mix(in srgb,var(--accent) 82%,#000));color:var(--on-accent);position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 10px 22px -10px rgba(0,0,0,.55),0 6px 18px -10px var(--accent)}
+.addkey::after{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.55) 50%,transparent 80%);transform:translateX(-160%) skewX(-12deg);animation:sheen 6s cubic-bezier(.4,0,.2,1) 1s infinite;pointer-events:none}
+.addkey .i{position:relative;z-index:1}
+.mini .ap{background:radial-gradient(110% 90% at 100% 0%,rgba(76,110,245,.65),transparent 60%),linear-gradient(155deg,#26262B,#0A0A0B);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 0 1px rgba(255,255,255,.08),0 8px 18px -10px rgba(76,110,245,.7);border-radius:12px;position:relative;overflow:hidden}
+.mini .ap::after{content:"";position:absolute;top:0;bottom:0;left:0;width:70%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.3) 50%,transparent 80%);transform:translateX(-160%) skewX(-12deg);animation:sheen 8s cubic-bezier(.4,0,.2,1) 2s infinite}
+.mini .ap .i{position:relative;z-index:1}
 .mini .cnt{background:var(--fg);color:var(--bg)}
 .mini .cnt.over{background:var(--neg);color:#FFFFFF}
 .soon{background:var(--card)}
@@ -449,7 +457,6 @@ body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)
 .soon .sh .i{color:var(--warn)}
 .alertrow{background:var(--card)}
 .duechip{color:var(--bg);background:var(--fg)}
-.chip.ok{color:var(--fg2);background:var(--fill)}
 .chip.mute{color:var(--fg2);background:transparent;box-shadow:inset 0 0 0 1px var(--sep)}
 .radio.on{border-color:var(--fg)}.radio.on::after{background:var(--fg)}
 .tg[aria-checked="true"]{background:var(--accent)}
@@ -469,6 +476,12 @@ body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)
 .txtbtn.l{color:var(--fg2)}
 .linkbtn,.more,.addrow{color:var(--fg)}
 .setrow.link .tx{color:var(--fg)}
+.btn.main,.save{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 85%,#FFFFFF),var(--accent));box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 8px 18px -10px rgba(0,0,0,.5)}
+.tabbar{box-shadow:inset 0 1px 0 var(--hi),0 -10px 30px -20px rgba(0,0,0,.6)}
+.soon .sh .i{color:var(--warn)}
+.empty .art{background:linear-gradient(160deg,var(--card2),var(--card))}
+.mini .cnt{background:var(--warn);color:#1A1200}
+@media (prefers-reduced-motion: reduce){.wcard::after,.addkey::after,.mini .ap::after{animation:none;display:none}}
 @media (max-height:700px){
   .layer.full{top:calc(env(safe-area-inset-top,0px) + 8px)}
   #l2 .ed{gap:7px} #l2 .lhead{min-height:40px}
@@ -1200,7 +1213,7 @@ const wChip=()=>{const w=curW()==='all'?ALLW:W(curW());return `<button class="ch
 function renderStats(){
   const type=S.statType,all=viewTx(),m=inMonth(all,S.month),tot=catTotals(m,type);
   const total=Object.values(tot).reduce((a,b)=>a+b,0);
-  const items=Object.entries(tot).map(([id,v])=>({...catOf(id),v})).sort((a,b)=>b.v-a.v).map((it,i)=>({...it,color:`var(--g${Math.min(i,7)+1})`}));
+  const items=Object.entries(tot).map(([id,v])=>({...catOf(id),v})).sort((a,b)=>b.v-a.v);
   const d=parseISO(S.month+'-01'),isCur=S.month===ym(new Date());
   const days=isCur?new Date().getDate():new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
   const months=[];for(let k=5;k>=0;k--){const mm=shiftMonth(S.month,-k);months.push({m:mm,v:sumBy(inMonth(all,mm),type)});}
@@ -1285,7 +1298,7 @@ function renderSettings(){
     <div class="list">
       <div class="setrow"><span class="tx">Операций</span><span class="vv num">${S.tx.length}</span></div>
       <div class="setrow"><span class="tx">Где хранятся</span><span class="vv">Только на этом телефоне</span></div>
-      <div class="setrow"><span class="tx">Версия приложения</span><span class="vv num">14</span></div>
+      <div class="setrow"><span class="tx">Версия приложения</span><span class="vv num">15</span></div>
     </div>
     <button class="btn danger" data-a="wipe">Удалить все данные</button>
   </section>`;
