@@ -94,7 +94,8 @@ main.wrap{padding-block:6px calc(104px + env(safe-area-inset-bottom,0px))}
 .dots i.on{width:18px;background:var(--fg)}
 
 /* summary tiles */
-.sum{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.sum{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#hb{margin-top:14px}
 .st{background:var(--card);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:6px;min-width:0;text-align:left}
 .st .lb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg2)}
 .st .dot{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;color:var(--c);background:color-mix(in srgb,var(--c) 15%,transparent)}
@@ -349,6 +350,37 @@ button.row:active{background:var(--fill)}
 .toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 .toast button{color:var(--toast-a);font-weight:700}
 body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)}
+.presets{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:2px 16px}
+.presets::-webkit-scrollbar{display:none}
+.preset{flex:none;display:flex;align-items:center;gap:7px;height:38px;padding:0 13px 0 5px;border-radius:19px;background:var(--card);font-size:14px;font-weight:600;white-space:nowrap}
+.preset .ci{width:28px;height:28px}.preset .ci .i{width:15px;height:15px}
+.field select{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;font-size:16px;text-align:right;text-align-last:right;-webkit-appearance:none;appearance:none;padding:12px 0}
+.field select:focus{outline:none}
+.field input[type=date]{text-align:right;-webkit-appearance:none;appearance:none;min-height:24px}
+.tg{width:51px;height:31px;border-radius:16px;background:var(--fill);position:relative;flex:none;transition:background .25s}
+.tg::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.25);transition:transform .25s var(--ease)}
+.tg[aria-checked="true"]{background:var(--accent)}
+.tg[aria-checked="true"]::after{transform:translateX(20px)}
+.subhero{display:flex;flex-direction:column;gap:12px;padding:16px}
+.subhero .lb{font-size:13px;color:var(--fg2)}
+.subhero .big{font-family:var(--round);font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.subhero .big small{font-size:16px;color:var(--fg2);font-weight:600;margin-left:6px;letter-spacing:0}
+.amr{display:flex;flex-direction:column;align-items:flex-end;gap:1px;white-space:nowrap}
+.amr small{font-size:12px;color:var(--fg2);font-variant-numeric:tabular-nums}
+.duechip{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;color:var(--warn);background:color-mix(in srgb,var(--warn) 16%,transparent);margin-left:6px;vertical-align:1px}
+.paused{opacity:.5}
+.soon{display:flex;flex-direction:column;background:color-mix(in srgb,var(--warn) 11%,var(--card));border-radius:16px;padding:4px 0;width:100%;text-align:left;margin-bottom:10px}
+.soon .sh{display:flex;align-items:center;gap:8px;padding:9px 14px 4px;font-size:13px;font-weight:700;color:var(--warn)}
+.soon .sh .i{width:17px;height:17px}
+.soon .sl{display:flex;align-items:center;gap:10px;padding:6px 14px;font-size:15px}
+.soon .sl .ci{width:28px;height:28px}.soon .sl .ci .i{width:15px;height:15px}
+.soon .sl .d{color:var(--fg2);font-size:13px;width:84px;flex:none}
+.soon .sl .n{flex:1;min-width:0;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.soon .sl .a{font-family:var(--round);font-weight:700;white-space:nowrap}
+.subprev{display:flex;align-items:center;gap:12px;padding:2px 2px}
+.subprev .ci{width:52px;height:52px}.subprev .ci .i{width:26px;height:26px}
+.subprev b{font-size:18px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.subprev span{font-size:13px;color:var(--fg2)}
 @media (max-height:700px){
   .layer.full{top:calc(env(safe-area-inset-top,0px) + 8px)}
   #l2 .ed{gap:7px} #l2 .lhead{min-height:40px}
@@ -415,6 +447,14 @@ const P={
   down:'<path d="M7 10l5 5 5-5"/>',
   layers:'<path d="M12 4 3.5 8.5 12 13l8.5-4.5z"/><path d="M3.5 12.5 12 17l8.5-4.5M3.5 16.5 12 21l8.5-4.5"/>',
   alert:'<path d="M12 4 2.8 19.5h18.4z"/><path d="M12 10v4M12 16.8v.01"/>',
+  repeat:'<path d="M17 3.5 20.5 7 17 10.5"/><path d="M3.5 12v-2a3 3 0 0 1 3-3h14"/><path d="M7 20.5 3.5 17 7 13.5"/><path d="M20.5 12v2a3 3 0 0 1-3 3h-14"/>',
+  cloud:'<path d="M7 18.5h10.5a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.6 9.1 4.75 4.75 0 0 0 7 18.5z"/>',
+  send:'<path d="M21 3.5 3.5 10.5l7 3 3 7z"/><path d="m21 3.5-10.5 10"/>',
+  music:'<path d="M9 18V5.5l11-2V16"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>',
+  play:'<rect x="3" y="5.5" width="18" height="13" rx="3.5"/><path d="m10.5 9.5 4 2.5-4 2.5z"/>',
+  star:'<path d="m12 4 2.4 5 5.4.6-4 3.7 1.1 5.4L12 16l-4.9 2.7 1.1-5.4-4-3.7 5.4-.6z"/>',
+  wifi:'<path d="M4 9.5a12 12 0 0 1 16 0M7 13a7.5 7.5 0 0 1 10 0M10 16.5a3 3 0 0 1 4 0"/><circle cx="12" cy="19.5" r=".8"/>',
+  bell:'<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
   receipt:'<path d="M6 3.5h12v17l-2-1.3-2 1.3-2-1.3-2 1.3-2-1.3-2 1.3z"/><path d="M9 8h6M9 11.5h6M9 15h4"/>'
 };
 const ic=(n,cls)=>`<svg class="i${cls?' '+cls:''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]||P.box}</svg>`;
@@ -427,6 +467,7 @@ const CATS={
     {id:'transport',name:'Транспорт',icon:'car',color:'#C99400'},
     {id:'home',name:'Дом',icon:'home',color:'#6E56CF'},
     {id:'bills',name:'Связь, счета',icon:'phone',color:'#3E63DD'},
+    {id:'subs',name:'Подписки',icon:'repeat',color:'#5B5BD6'},
     {id:'shopping',name:'Покупки',icon:'shirt',color:'#D6409F'},
     {id:'fun',name:'Развлечения',icon:'film',color:'#8E4EC6'},
     {id:'health',name:'Здоровье',icon:'pill',color:'#30A46C'},
@@ -502,11 +543,48 @@ const DB=(()=>{
 })();
 
 /* ================= состояние ================= */
-const S={tx:[],budgets:{},wallets:[],settings:{theme:'system',demo:false,seeded:false,onboarded:false,wallet:'all'},
+const S={tx:[],budgets:{},wallets:[],subs:[],budTab:'limits',settings:{theme:'system',demo:false,seeded:false,onboarded:false,wallet:'all'},
   month:ym(new Date()),tab:'home',statType:'exp',limit:40,q:'',lastId:null,sheet:null};
 const saveBudgets=()=>DB.set('budgets',S.budgets);
 const saveSettings=()=>DB.set('settings',S.settings);
 const saveWallets=()=>DB.set('wallets',S.wallets);
+const saveSubs=()=>DB.set('subs',S.subs);
+
+/* ================= подписки ================= */
+const CUR={KZT:'₸',USD:'$',RUB:'₽'};
+const DEF_RATES={USD:520,RUB:6.5};
+const PERIODS={week:'Неделя',month:'Месяц',year:'Год'};
+const PERIOD_L={week:'каждую неделю',month:'каждый месяц',year:'раз в год'};
+const SUBICONS=['repeat','cloud','send','music','play','star','film','dumbbell','wifi','home','phone','card','book','gift'];
+const SUBCOLORS=['#5B5BD6','#3E63DD','#0090FF','#30A46C','#E5484D','#E8890C','#C99400','#8E4EC6','#D6409F','#0D9FB5','#7C8590'];
+const SUBPRESETS=[['iCloud+','cloud','#3E63DD','USD'],['Telegram Premium','send','#0090FF','USD'],['Spotify','music','#30A46C','KZT'],['YouTube Premium','play','#E5484D','KZT'],['Яндекс Плюс','star','#E8890C','RUB'],['Netflix','film','#E5484D','USD'],['Спортзал','dumbbell','#0D9FB5','KZT'],['Интернет','wifi','#8E4EC6','KZT'],['Коммуналка','home','#C99400','KZT'],['Мобильная связь','phone','#3E63DD','KZT']];
+const rates=()=>Object.assign({},DEF_RATES,S.settings.rates||{});
+const rateOf=c=>c==='KZT'?1:(rates()[c]||1);
+const toKZT=(a,c)=>Math.round(a*rateOf(c)*100)/100;
+const fmtCur=(a,c)=>c==='USD'?'$'+nf.format(a):nf.format(a)+' '+CUR[c];
+const monthlyKZT=x=>toKZT(x.amount,x.currency)*(x.period==='year'?1/12:x.period==='week'?52/12:1);
+const dim=(y,m)=>new Date(y,m+1,0).getDate();
+function addPeriod(ds,period,anchor){const d=parseISO(ds);
+  if(period==='week'){d.setDate(d.getDate()+7);return iso(d);}
+  let y=d.getFullYear(),m=d.getMonth();if(period==='year')y++;else{m++;if(m>11){m=0;y++;}}
+  return iso(new Date(y,m,Math.min(anchor||d.getDate(),dim(y,m))));}
+const daysUntil=ds=>Math.round((parseISO(ds)-parseISO(today()))/864e5);
+function dueLabel(ds){const n=daysUntil(ds);if(n===0)return 'Сегодня';if(n===1)return 'Завтра';if(n===2)return 'Послезавтра';if(n>2&&n<7)return 'Через '+n+' '+(n<5?'дня':'дней');return shortDate(ds);}
+function processSubs(){
+  const created=[],t=today();let changed=false;
+  S.subs.forEach(x=>{if(!x.active)return;let guard=0;
+    while(guard++<400&&(x.auto?x.next<=t:x.next<t)){
+      if(x.auto){const tx={id:uid(),ts:Date.now()+created.length,type:'exp',amount:toKZT(x.amount,x.currency),cat:'subs',walletId:W(x.walletId)?x.walletId:S.wallets[0].id,date:x.next,note:x.name+(x.currency!=='KZT'?' · '+fmtCur(x.amount,x.currency):''),subId:x.id};S.tx.push(tx);created.push(tx);}
+      x.next=addPeriod(x.next,x.period,x.anchor);changed=true;}
+  });
+  if(created.length)DB.putMany(created);if(changed)saveSubs();
+  return created;
+}
+const upcoming=()=>S.subs.filter(x=>x.active&&daysUntil(x.next)>=0&&daysUntil(x.next)<=2).sort((a,b)=>a.next<b.next?-1:1);
+function updateBadge(){try{if(!('setAppBadge' in navigator))return;const n=S.settings.badge?upcoming().length:0;if(n)navigator.setAppBadge(n).catch(()=>{});else navigator.clearAppBadge().catch(()=>{});}catch(e){}}
+function soonHtml(){const u=upcoming();if(!u.length)return '';
+  return `<button class="soon" data-a="goSubs"><span class="sh">${ic('bell')}Скоро спишется</span>${u.slice(0,3).map(x=>`<span class="sl">${ciC(x)}<span class="d">${dueLabel(x.next)}</span><span class="n">${esc(x.name)}</span><span class="a num">${fmtCur(x.amount,x.currency)}</span></span>`).join('')}${u.length>3?`<span class="sl" style="color:var(--fg2);font-size:13px">и ещё ${u.length-3}</span>`:''}</button>`;}
+function chargedToast(c){if(!c.length)return;toast(c.length===1?'Списано: '+c[0].note.split(' · ')[0]+' '+money(c[0].amount):'Списано платежей: '+c.length);}
 const newWallet=o=>Object.assign({id:'w_'+uid(),name:'Кошелек',icon:'wallet',color:'#0B8F6E',initial:0,created:Date.now()},o||{});
 const W=id=>S.wallets.find(w=>w.id===id);
 const curW=()=>S.settings.wallet==='all'||!W(S.settings.wallet)?'all':S.settings.wallet;
@@ -551,7 +629,10 @@ function seedDemo(){
     if(r()>.5)add(1+Math.floor(r()*last),'exp','shopping',amt(9000,45000,500),pick(['Кроссовки','Куртка','Наушники']));
     if(r()>.6)add(1+Math.floor(r()*last),'exp','beauty',amt(4000,9000,500),'Стрижка',cash.id);
   }
-  return{wallets:[card,cash],tx:out};
+  const dd=k=>{const d=new Date();d.setDate(d.getDate()+k);return iso(d);};
+  const mk=(name,icon,color,amount,currency,period,k,auto)=>{const n=dd(k);return{id:'s_'+uid(),name,icon,color,amount,currency,period,next:n,anchor:parseISO(n).getDate(),walletId:card.id,auto,active:true};};
+  const subs=[mk('Spotify','music','#30A46C',2290,'KZT','month',1,true),mk('Яндекс Плюс','star','#E8890C',399,'RUB','month',2,true),mk('iCloud+','cloud','#3E63DD',0.99,'USD','month',9,true),mk('Спортзал','dumbbell','#0D9FB5',15000,'KZT','month',14,false),mk('Интернет','wifi','#8E4EC6',8990,'KZT','month',20,true),mk('Telegram Premium','send','#0090FF',35.99,'USD','year',120,true)];
+  return{wallets:[card,cash],tx:out,subs};
 }
 
 /* ================= тема и цвета ================= */
@@ -575,6 +656,89 @@ function applyColors(){
 let themeSet=false;
 function applyTheme(){applyColors();const t=S.settings.theme,r=document.documentElement;
   if(t==='light'||t==='dark'){r.setAttribute('data-theme',t);themeSet=true;}else if(themeSet){r.removeAttribute('data-theme');themeSet=false;}}
+function renderSubs(){
+  const list=S.subs.slice().sort((a,b)=>(b.active-a.active)||(a.next<b.next?-1:a.next>b.next?1:0));
+  const act=S.subs.filter(x=>x.active),m=Math.round(act.reduce((a,x)=>a+monthlyKZT(x),0));
+  const r=rates(),hasFx=S.subs.some(x=>x.currency!=='KZT');
+  $('#main').innerHTML=`<section class="view stack">
+    <div class="hh"><h1 class="lt">Бюджеты</h1></div>
+    ${budSeg()}
+    ${S.subs.length?`<div class="card subhero"><span class="lb">Подписки и регулярные платежи</span><div class="big num">${money(m)}<small>в месяц</small></div><div class="split"><div><span>В год</span><b class="num">${money(m*12)}</b></div><div><span>Активных</span><b class="num">${act.length}</b></div></div></div>
+    ${soonHtml().replace('data-a="goSubs"','data-a="noop"')}
+    <div class="sec" style="padding-top:2px">Все платежи</div>
+    <div class="list">${list.map(x=>{const n=daysUntil(x.next);return `<button class="row ${x.active?'':'paused'}" data-a="subEdit" data-id="${x.id}">${ciC(x)}<span class="tx"><span class="t1">${esc(x.name)}${x.active&&n>=0&&n<=2?`<span class="duechip">${dueLabel(x.next)}</span>`:''}</span><span class="t2">${x.active?shortDate(x.next)+' · '+PERIOD_L[x.period]+(x.auto?'':' · без записи'):'На паузе'}</span></span><span class="amr"><span class="am num">${fmtCur(x.amount,x.currency)}</span>${x.currency!=='KZT'?`<small>≈ ${money(Math.round(toKZT(x.amount,x.currency)))}</small>`:''}</span></button>`;}).join('')}</div>`
+    :`<div class="promo" style="margin-top:0"><b>Добавьте подписки и регулярные платежи</b><p>Приложение посчитает, сколько уходит на них за месяц и за год, предупредит за 2 дня до списания и само запишет расход в день оплаты.</p></div>
+      <div class="presets">${SUBPRESETS.map((p,i)=>`<button class="preset" data-a="subNew" data-p="${i}">${ciC({icon:p[1],color:p[2]})}${esc(p[0])}</button>`).join('')}</div>`}
+    <button class="btn main" data-a="subNew" style="width:100%;height:50px">${ic('plus')}Добавить платёж</button>
+    <div class="sec">Курсы валют</div>
+    <div class="form">
+      <div class="field"><label for="rUSD">1 $ =</label><input id="rUSD" inputmode="decimal" autocomplete="off" value="${String(r.USD).replace('.',',')}"><span class="u">₸</span></div>
+      <div class="field"><label for="rRUB">1 ₽ =</label><input id="rRUB" inputmode="decimal" autocomplete="off" value="${String(r.RUB).replace('.',',')}"><span class="u">₸</span></div>
+    </div>
+    <button class="btn soft" data-a="fetchRates" style="width:100%">Обновить курс из интернета</button>
+    <p class="note">${S.settings.ratesDate?'Курс обновлён '+shortDate(S.settings.ratesDate).toLowerCase()+'.':'Сейчас указан примерный курс, обновите его.'} Подписки в долларах и рублях пересчитываются в тенге по этому курсу. Без интернета можно вписать курс вручную.</p>
+    <div class="sec">Напоминания</div>
+    <div class="list"><div class="setrow"><span class="tx">Цифра на иконке приложения<br><span style="font-size:13px;color:var(--fg2);font-weight:400">Сколько списаний в ближайшие 2 дня</span></span><button class="tg" role="switch" data-a="badgeTg" aria-checked="${!!S.settings.badge}" aria-label="Цифра на иконке"></button></div></div>
+    <p class="note">Плашка «Скоро спишется» появляется на главной за 2 дня до оплаты. Уведомления приходят только когда вы открываете приложение.</p>
+  </section>`;
+  const bind=(id,k)=>{const i=$('#'+id);i.addEventListener('change',()=>{const v=parseAmount(i.value);if(v>0){S.settings.rates=Object.assign({},rates(),{[k]:v});saveSettings();renderSubs();}});};
+  bind('rUSD','USD');bind('rRUB','RUB');
+}
+
+/* ---- форма подписки ---- */
+let SE=null;
+function openSubEdit(id,preset){
+  const x=id?S.subs.find(z=>z.id===id):null,p=preset!=null?SUBPRESETS[preset]:null;
+  const defW=curW()!=='all'?curW():(S.settings.lastWallet&&W(S.settings.lastWallet)?S.settings.lastWallet:S.wallets[0].id);
+  SE=x?{...x}:{id:null,name:p?p[0]:'',icon:p?p[1]:'repeat',color:p?p[2]:'#5B5BD6',currency:p?p[3]:'KZT',amount:'',period:'month',next:today(),walletId:defW,auto:true,active:true};
+  const seg=(a,cur,opts)=>`<div class="seg">${Object.entries(opts).map(([k,l])=>`<button data-a="${a}" data-v="${k}" aria-pressed="${cur===k}">${l}</button>`).join('')}</div>`;
+  openL(3,`<div class="lhead"><button class="txtbtn l" data-a="close" data-l="3">Отмена</button><h2>${x?'Платёж':'Новый платёж'}</h2><button class="txtbtn b r" data-a="subSave">Готово</button></div>
+  <div class="stack">
+    ${x?'':`<div class="presets" id="sPresets">${SUBPRESETS.map((q,i)=>`<button class="preset" data-a="subPreset" data-p="${i}">${ciC({icon:q[1],color:q[2]})}${esc(q[0])}</button>`).join('')}</div>`}
+    <div class="subprev" id="sPrev"></div>
+    <div class="form">
+      <div class="field"><label for="sName">Название</label><input id="sName" maxlength="30" placeholder="Например, Spotify" value="${esc(SE.name)}"></div>
+      <div class="field"><label for="sAmt">Сумма</label><input id="sAmt" inputmode="decimal" autocomplete="off" placeholder="0" value="${SE.amount!==''?String(SE.amount).replace('.',','):''}"><span class="u" id="sCurU">${CUR[SE.currency]}</span></div>
+    </div>
+    ${seg('subCur',SE.currency,{KZT:'Тенге ₸',USD:'Доллары $',RUB:'Рубли ₽'})}
+    <div class="sec" style="padding-top:2px">Как часто</div>
+    ${seg('subPer',SE.period,PERIODS)}
+    <div class="form">
+      <div class="field"><label for="sNext">Следующее списание</label><input type="date" id="sNext" value="${SE.next}"></div>
+      <div class="field"><label for="sWal">Счёт</label><select id="sWal">${S.wallets.map(w=>`<option value="${w.id}" ${w.id===SE.walletId?'selected':''}>${esc(w.name)}</option>`).join('')}</select></div>
+      <div class="field"><label>Записывать расход сам</label><span style="flex:1"></span><button class="tg" role="switch" data-a="subAuto" aria-checked="${SE.auto}" aria-label="Записывать расход автоматически"></button></div>
+      ${x?`<div class="field"><label>Активна</label><span style="flex:1"></span><button class="tg" role="switch" data-a="subActive" aria-checked="${SE.active}" aria-label="Активна"></button></div>`:''}
+    </div>
+    <p class="note">Если включено «Записывать расход сам», в день списания приложение создаст расход в категории «Подписки» и уменьшит остаток счёта. Валюта пересчитывается в тенге по текущему курсу.</p>
+    <div class="sec" style="padding-top:2px">Иконка</div>
+    <div class="picks" id="sIcons">${SUBICONS.map(n=>`<button class="icb" data-a="subIcon" data-v="${n}" aria-pressed="${SE.icon===n}" aria-label="Иконка">${ic(n)}</button>`).join('')}</div>
+    <div class="sec" style="padding-top:2px">Цвет</div>
+    <div class="picks" id="sColors">${SUBCOLORS.map(c=>`<button class="sw" data-a="subColor" data-v="${c}" style="--c:${c}" aria-pressed="${SE.color===c}" aria-label="Цвет"></button>`).join('')}</div>
+    ${x?`<button class="btn danger" data-a="subDel">Удалить платёж</button>`:''}
+  </div>`,el=>{
+    el.querySelector('#sName').addEventListener('input',e=>{SE.name=e.target.value;subPrev();});
+    el.querySelector('#sAmt').addEventListener('input',e=>{SE.amount=e.target.value;subPrev();});
+    el.querySelector('#sNext').addEventListener('change',e=>{if(e.target.value){SE.next=e.target.value;subPrev();}});
+    el.querySelector('#sWal').addEventListener('change',e=>SE.walletId=e.target.value);
+    subPrev();
+  });
+}
+function subPrev(){
+  const a=parseAmount(SE.amount),el=$('#sPrev');if(!el)return;
+  el.innerHTML=`${ciC(SE)}<span style="display:flex;flex-direction:column;gap:2px;min-width:0"><b>${esc(SE.name||'Новый платёж')}</b><span class="num">${a>0?fmtCur(a,SE.currency)+(SE.currency!=='KZT'?' ≈ '+money(Math.round(toKZT(a,SE.currency))):'')+' · ':''}${dueLabel(SE.next)}</span></span>`;
+  $('#sCurU').textContent=CUR[SE.currency];
+}
+function subMark(a,v){$$(`[data-a="${a}"]`).forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v));}
+function subSave(){
+  const name=(SE.name||'').trim(),a=parseAmount(SE.amount);
+  if(!name){toast('Введите название');return;}
+  if(!(a>0)){toast('Введите сумму');return;}
+  const rec={name,icon:SE.icon,color:SE.color,amount:a,currency:SE.currency,period:SE.period,next:SE.next,anchor:parseISO(SE.next).getDate(),walletId:SE.walletId,auto:!!SE.auto,active:SE.active!==false};
+  if(SE.id){Object.assign(S.subs.find(z=>z.id===SE.id),rec);}else S.subs.push(Object.assign({id:'s_'+uid()},rec));
+  saveSubs();const c=processSubs();closeL(3);S.budTab='subs';refresh();updateBadge();
+  if(c.length)chargedToast(c);else toast('Платёж сохранён');
+}
+
 function growBars(root){raf2(()=>{(root||document).querySelectorAll('.bar i[data-w]').forEach(i=>i.style.width=i.dataset.w+'%');});}
 
 /* ================= вкладки ================= */
@@ -636,7 +800,7 @@ function renderHomeBody(){
   const exp=sumBy(m,'exp'),inc=sumBy(m,'inc');
   const mt=catTotals(inMonth(S.tx,S.month),'exp');let over=0,near=0;
   Object.entries(S.budgets).forEach(([id,l])=>{if(!(l>0))return;const s=mt[id]||0;if(s>l)over++;else if(s/l>=.85)near++;});
-  let h=`<div class="sum">
+  let h=soonHtml()+`<div class="sum">
     <button class="st" data-a="goStats" data-t="exp" style="--c:var(--exp)"><span class="lb"><span class="dot">${ic('exp')}</span>Расходы</span><b class="num">${exp>0?'−':''}${money(exp)}</b></button>
     <button class="st" data-a="goStats" data-t="inc" style="--c:var(--inc)"><span class="lb"><span class="dot">${ic('inc')}</span>Доходы</span><b class="num">${inc>0?'+':''}${money(inc)}</b></button>
   </div>`;
@@ -688,13 +852,16 @@ function renderStats(){
 }
 
 /* ================= бюджеты ================= */
+const budSeg=()=>`<div class="seg" role="group" aria-label="Раздел"><button data-a="budTab" data-t="limits" aria-pressed="${S.budTab==='limits'}">Лимиты</button><button data-a="budTab" data-t="subs" aria-pressed="${S.budTab==='subs'}">Подписки${upcoming().length?' · '+upcoming().length:''}</button></div>`;
 function renderBudgets(){
+  if(S.budTab==='subs')return renderSubs();
   const tot=catTotals(inMonth(S.tx,S.month),'exp');
   const withB=CATS.exp.filter(c=>S.budgets[c.id]>0),without=CATS.exp.filter(c=>!(S.budgets[c.id]>0));
   const Lm=withB.reduce((a,c)=>a+S.budgets[c.id],0),Sp=withB.reduce((a,c)=>a+(tot[c.id]||0),0);
   const st=(s,l)=>s>l?'over':s/l>=.85?'warn':'ok',colr=x=>x==='over'?'var(--neg)':x==='warn'?'var(--warn)':'var(--pos)';
   $('#main').innerHTML=`<section class="view stack">
     <div class="hh"><h1 class="lt">Бюджеты</h1></div>
+    ${budSeg()}
     <div class="subrow">${mpick()}</div>
     ${Lm?`<div class="card bhero"><span class="lb">Осталось по лимитам за ${monthName(S.month).toLowerCase()}</span><div class="big num ${Lm-Sp<0?'neg':''}">${signed(Lm-Sp)}</div><span class="bar" style="--c:${colr(st(Sp,Lm))};height:8px"><i data-w="${Math.min(100,Sp/Lm*100)}"></i></span><div class="split"><div><span>Потрачено</span><b class="num">${money(Sp)}</b></div><div><span>Общий лимит</span><b class="num">${money(Lm)}</b></div></div></div>`
       :`<div class="promo" style="margin-top:0"><b>Лимитов пока нет</b><p>Выберите категорию ниже и задайте сумму на месяц, например «Кафе — 50 000 ₸».</p></div>`}
@@ -713,6 +880,7 @@ function renderSettings(){
     <div class="hh"><h1 class="lt">Ещё</h1></div>
     <div class="list">
       <button class="setrow" data-a="openWallets">${ciC({icon:'wallet',color:'#0B8F6E'})}<span class="tx">Счета</span><span class="vv num">${S.wallets.length}</span>${ic('right','go')}</button>
+      <button class="setrow" data-a="goSubs">${ciC({icon:'repeat',color:'#5B5BD6'})}<span class="tx">Подписки и платежи</span><span class="vv num">${S.subs.length||''}</span>${ic('right','go')}</button>
       <button class="setrow" data-a="openSearch">${ciC({icon:'search',color:'#3E63DD'})}<span class="tx">Поиск операций</span>${ic('right','go')}</button>
       <button class="setrow" data-a="add" data-t="tr">${ciC({icon:'tr',color:'#8E4EC6'})}<span class="tx">Перевод между счетами</span>${ic('right','go')}</button>
     </div>
@@ -930,7 +1098,7 @@ function budgetSave(id){const v=parseAmount($('#bLim').value);if(v>0)S.budgets[i
 
 /* ================= резервная копия ================= */
 async function exportData(){
-  const data=JSON.stringify({app:'moi-budget',version:2,exported:new Date().toISOString(),wallets:S.wallets,tx:S.tx,budgets:S.budgets});
+  const data=JSON.stringify({app:'moi-budget',version:3,exported:new Date().toISOString(),wallets:S.wallets,tx:S.tx,budgets:S.budgets,subs:S.subs,rates:S.settings.rates||null});
   const name='budget-'+today()+'.json';
   try{const f=new File([data],name,{type:'application/json'});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'Резервная копия бюджета'});toast('Копия готова');return;}}
   catch(e){if(e&&e.name==='AbortError')return;}
@@ -945,13 +1113,15 @@ function importFile(f){
     const def=S.wallets[0].id,have=new Set(S.tx.map(t=>t.id));
     const fresh=j.tx.filter(t=>t&&t.id&&!have.has(t.id)&&['exp','inc','tr'].includes(t.type)&&+t.amount>0&&/^\d{4}-\d{2}-\d{2}$/.test(t.date)).map(t=>{const o={id:String(t.id),type:t.type,amount:+t.amount,cat:String(t.cat||''),date:t.date,note:String(t.note||''),ts:+t.ts||0,walletId:W(t.walletId)?t.walletId:def};if(t.type==='tr'){o.toWallet=W(t.toWallet)?t.toWallet:def;o.cat='transfer';}return o;});
     S.tx.push(...fresh);DB.putMany(fresh);saveWallets();
+    if(Array.isArray(j.subs)){j.subs.forEach(x=>{if(x&&x.id&&x.name&&+x.amount>0&&/^\d{4}-\d{2}-\d{2}$/.test(x.next)&&!S.subs.some(z=>z.id===x.id))S.subs.push({id:String(x.id),name:String(x.name),icon:SUBICONS.includes(x.icon)?x.icon:'repeat',color:/^#[0-9a-f]{6}$/i.test(x.color)?x.color:'#5B5BD6',amount:+x.amount,currency:CUR[x.currency]?x.currency:'KZT',period:PERIODS[x.period]?x.period:'month',next:x.next,anchor:+x.anchor||parseISO(x.next).getDate(),walletId:W(x.walletId)?x.walletId:def,auto:x.auto!==false,active:x.active!==false});});saveSubs();}
+    if(j.rates&&+j.rates.USD>0&&+j.rates.RUB>0&&!S.settings.rates)S.settings.rates={USD:+j.rates.USD,RUB:+j.rates.RUB};
     if(j.budgets&&typeof j.budgets==='object'){Object.entries(j.budgets).forEach(([k,v])=>{if(+v>0)S.budgets[k]=+v;});saveBudgets();}
     S.settings.onboarded=true;S.settings.demo=false;saveSettings();refresh();toast(fresh.length?'Добавлено операций: '+fresh.length:'Новых операций в файле нет');
   }catch(e){toast('Этот файл не похож на копию бюджета');}};
   r.readAsText(f);
 }
 function resetAll(){
-  S.tx=[];S.budgets={};DB.clearTx();
+  S.tx=[];S.budgets={};S.subs=[];saveSubs();DB.clearTx();updateBadge();
   S.wallets=[newWallet({id:'w_main'})];S.settings.wallet='w_main';S.settings.demo=false;S.settings.onboarded=false;S.settings.lastWallet=null;
   saveWallets();saveBudgets();saveSettings();S.month=ym(new Date());
 }
@@ -1014,6 +1184,31 @@ function deleteTx(id,wrap){
 /* ================= обработка нажатий ================= */
 function arm(b,label,fn){if(!b.classList.contains('armed')){const old=b.textContent;b.classList.add('armed');b.textContent=label;setTimeout(()=>{if(b.isConnected){b.classList.remove('armed');b.textContent=old;}},3500);return;}fn();}
 const ACT={
+  noop:()=>{},
+  goSubs:()=>{S.tab='budgets';S.budTab='subs';window.scrollTo(0,0);render();},
+  budTab:b=>{S.budTab=b.dataset.t;render();},
+  subNew:b=>openSubEdit(null,b.dataset.p!=null?+b.dataset.p:null),
+  subEdit:b=>openSubEdit(b.dataset.id),
+  subPreset:b=>{const q=SUBPRESETS[+b.dataset.p];SE.name=q[0];SE.icon=q[1];SE.color=q[2];SE.currency=q[3];$('#sName').value=q[0];subMark('subIcon',SE.icon);subMark('subColor',SE.color);subMark('subCur',SE.currency);subPrev();try{$('#sAmt').focus();}catch(e){}},
+  subCur:b=>{SE.currency=b.dataset.v;subMark('subCur',SE.currency);subPrev();},
+  subPer:b=>{SE.period=b.dataset.v;subMark('subPer',SE.period);},
+  subIcon:b=>{SE.icon=b.dataset.v;subMark('subIcon',SE.icon);subPrev();},
+  subColor:b=>{SE.color=b.dataset.v;subMark('subColor',SE.color);subPrev();},
+  subAuto:b=>{SE.auto=!SE.auto;b.setAttribute('aria-checked',SE.auto);},
+  subActive:b=>{SE.active=!SE.active;b.setAttribute('aria-checked',SE.active);},
+  subSave:()=>subSave(),
+  subDel:b=>arm(b,'Нажмите ещё раз для удаления',()=>{S.subs=S.subs.filter(z=>z.id!==SE.id);saveSubs();closeL(3);refresh();updateBadge();toast('Платёж удалён. Прошлые расходы остались');}),
+  fetchRates:async b=>{b.disabled=true;const old=b.textContent;b.textContent='Обновляю…';
+    try{const r=await fetch('https://open.er-api.com/v6/latest/KZT',{cache:'no-store'});const j=await r.json();
+      if(!j||!j.rates||!j.rates.USD||!j.rates.RUB)throw 0;
+      S.settings.rates={USD:Math.round(100/j.rates.USD)/100,RUB:Math.round(1000/j.rates.RUB)/1000};S.settings.ratesDate=today();saveSettings();renderSubs();toast('Курс обновлён');}
+    catch(e){b.disabled=false;b.textContent=old;toast('Не получилось: нет интернета. Впишите курс вручную');}},
+  badgeTg:async b=>{
+    if(S.settings.badge){S.settings.badge=false;saveSettings();updateBadge();b.setAttribute('aria-checked','false');return;}
+    if(!('setAppBadge' in navigator)||!('Notification' in window)){toast('Работает в приложении с экрана «Домой», iOS 16.4+');return;}
+    try{const p=await Notification.requestPermission();
+      if(p==='granted'){S.settings.badge=true;saveSettings();updateBadge();b.setAttribute('aria-checked','true');toast('Цифра на иконке включена');}
+      else toast('Разрешите уведомления: Настройки → Уведомления → Бюджет');}catch(e){toast('Не удалось включить');}},
   close:b=>closeL(+b.dataset.l),
   tab:b=>{const t=b.dataset.t;if(S.tab===t){window.scrollTo({top:0,behavior:'smooth'});return;}S.tab=t;S.limit=40;window.scrollTo(0,0);render();},
   goStats:b=>{S.statType=b.dataset.t;S.tab='stats';window.scrollTo(0,0);render();},
@@ -1076,10 +1271,10 @@ document.addEventListener('keydown',e=>{
 /* ================= запуск ================= */
 (async function init(){
   const ok=await DB.open();
-  if(ok){const [tx,b,st,ws]=await Promise.all([DB.allTx(),DB.get('budgets'),DB.get('settings'),DB.get('wallets')]);
-    S.tx=tx||[];S.budgets=b||{};if(st)Object.assign(S.settings,st);S.wallets=Array.isArray(ws)?ws:[];}
+  if(ok){const [tx,b,st,ws,sb]=await Promise.all([DB.allTx(),DB.get('budgets'),DB.get('settings'),DB.get('wallets'),DB.get('subs')]);
+    S.tx=tx||[];S.budgets=b||{};if(st)Object.assign(S.settings,st);S.wallets=Array.isArray(ws)?ws:[];S.subs=Array.isArray(sb)?sb:[];}
   if(!S.settings.seeded&&!S.tx.length&&inFrame){
-    const d=seedDemo();S.wallets=d.wallets;S.tx=d.tx;S.budgets={cafe:50000,food:150000,transport:30000,fun:25000,home:200000};
+    const d=seedDemo();S.wallets=d.wallets;S.tx=d.tx;S.subs=d.subs;saveSubs();S.budgets={cafe:50000,food:150000,transport:30000,fun:25000,home:200000};
     S.settings.seeded=true;S.settings.demo=true;S.settings.onboarded=true;S.settings.wallet='all';
     DB.putMany(S.tx);saveBudgets();saveWallets();saveSettings();
   }
@@ -1088,7 +1283,9 @@ document.addEventListener('keydown',e=>{
   S.tx.forEach(t=>{if(!t.walletId||!W(t.walletId)){t.walletId=def;fix.push(t);}if(t.type==='tr'&&!W(t.toWallet)){t.toWallet=def;fix.push(t);}});
   if(fix.length)DB.putMany(fix);
   if(S.tx.length&&!S.settings.onboarded){S.settings.onboarded=true;saveSettings();}
-  applyTheme();render();
+  const charged=processSubs();
+  applyTheme();render();chargedToast(charged);updateBadge();
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)return;const c=processSubs();if(c.length){refresh();chargedToast(c);}else if(S.tab==='home')renderHomeBody();updateBadge();});
   try{if(!inFrame&&navigator.storage&&navigator.storage.persist)navigator.storage.persist();}catch(e){}
   try{if(!inFrame&&'serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});}catch(e){}
 })();
