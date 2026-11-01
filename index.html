@@ -7,8 +7,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Бюджет">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0E1012" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4F4F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
@@ -16,32 +16,18 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 /* Layout: tabbed app — swipeable wallet cards on top, month summary tiles, day-grouped operations; bottom tab bar with a raised square add key; bottom-sheet editor with category grid and flat keypad */
+/* Layout: monochrome, serious — black & white surfaces with hairlines, grey-scale data, colour only for warnings; tab bar with white add key */
 :root{
-  --bg:#F3F4F6; --card:#FFFFFF; --card2:#F7F8FA; --fg:#14171A; --fg2:#6B7280; --fg3:#C9CDD3;
-  --sep:rgba(20,23,26,.09); --fill:rgba(20,23,26,.06);
-  --accent:#0B8F6E; --accent-soft:rgba(11,143,110,.12); --on-accent:#FFFFFF;
-  --pos:#0B8F6E; --neg:#E5484D; --warn:#E08A00; --exp:#E5484D; --inc:#0B8F6E; --tr:#3E63DD;
-  --bar:rgba(255,255,255,.9); --scrim:rgba(10,12,14,.35); --toast:#14171A; --toast-fg:#FFFFFF; --toast-a:#5EE6C0;
-  --allcard:#2F3640;
+  --bg:#F4F4F5; --card:#FFFFFF; --card2:#F2F2F3; --fg:#0A0A0A; --fg2:#6B6B70; --fg3:#C9C9CE; --sep:rgba(10,10,10,.09); --fill:rgba(10,10,10,.05); --accent:#0A0A0A; --accent-soft:rgba(10,10,10,.07); --on-accent:#FFFFFF; --pos:#0A0A0A; --neg:#D92D20; --warn:#B76E00; --exp:#0A0A0A; --inc:#0A0A0A; --tr:#0A0A0A; --bar:rgba(244,244,245,.92); --scrim:rgba(0,0,0,.35); --toast:#0A0A0A; --toast-fg:#FFFFFF; --toast-a:#FFFFFF; --allcard:#0A0A0A; --wcard:#0A0A0A; --wcard2:#1C1C1E; --g1:#0A0A0A; --g2:#3A3A3C; --g3:#5C5C60; --g4:#7E7E83; --g5:#A0A0A5; --g6:#BDBDC2; --g7:#D2D2D6; --g8:#E4E4E8;
   --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;
-  --round:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --round:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;
   --ease:cubic-bezier(.22,.8,.24,1);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0E1012; --card:#181B1F; --card2:#20242A; --fg:#EEF0F2; --fg2:#8A9099; --fg3:#3A4048;
-  --sep:rgba(255,255,255,.08); --fill:rgba(255,255,255,.07);
-  --accent:#34D1A6; --accent-soft:rgba(52,209,166,.16); --on-accent:#05271E;
-  --pos:#34D1A6; --neg:#FF6369; --warn:#FFB224; --exp:#FF6369; --inc:#34D1A6; --tr:#7C9CFF;
-  --bar:rgba(20,23,26,.92); --scrim:rgba(0,0,0,.6); --toast:#2A2F36; --toast-fg:#FFFFFF; --toast-a:#5EE6C0;
-  --allcard:#2A313B; color-scheme:dark;
+  --bg:#000000; --card:#111112; --card2:#1A1A1C; --fg:#F4F4F5; --fg2:#8D8D93; --fg3:#3A3A3D; --sep:rgba(255,255,255,.09); --fill:rgba(255,255,255,.06); --accent:#F4F4F5; --accent-soft:rgba(255,255,255,.1); --on-accent:#000000; --pos:#F4F4F5; --neg:#FF5A4F; --warn:#E3A33B; --exp:#F4F4F5; --inc:#F4F4F5; --tr:#F4F4F5; --bar:rgba(0,0,0,.9); --scrim:rgba(0,0,0,.65); --toast:#F4F4F5; --toast-fg:#000000; --toast-a:#000000; --allcard:#1C1C1E; --wcard:#161618; --wcard2:#060606; --g1:#F4F4F5; --g2:#C8C8CC; --g3:#A2A2A7; --g4:#7E7E83; --g5:#606064; --g6:#4A4A4D; --g7:#38383B; --g8:#2A2A2C; color-scheme:dark;
 }}
 :root[data-theme="dark"]{
-  --bg:#0E1012; --card:#181B1F; --card2:#20242A; --fg:#EEF0F2; --fg2:#8A9099; --fg3:#3A4048;
-  --sep:rgba(255,255,255,.08); --fill:rgba(255,255,255,.07);
-  --accent:#34D1A6; --accent-soft:rgba(52,209,166,.16); --on-accent:#05271E;
-  --pos:#34D1A6; --neg:#FF6369; --warn:#FFB224; --exp:#FF6369; --inc:#34D1A6; --tr:#7C9CFF;
-  --bar:rgba(20,23,26,.92); --scrim:rgba(0,0,0,.6); --toast:#2A2F36; --toast-fg:#FFFFFF; --toast-a:#5EE6C0;
-  --allcard:#2A313B; color-scheme:dark;
+  --bg:#000000; --card:#111112; --card2:#1A1A1C; --fg:#F4F4F5; --fg2:#8D8D93; --fg3:#3A3A3D; --sep:rgba(255,255,255,.09); --fill:rgba(255,255,255,.06); --accent:#F4F4F5; --accent-soft:rgba(255,255,255,.1); --on-accent:#000000; --pos:#F4F4F5; --neg:#FF5A4F; --warn:#E3A33B; --exp:#F4F4F5; --inc:#F4F4F5; --tr:#F4F4F5; --bar:rgba(0,0,0,.9); --scrim:rgba(0,0,0,.65); --toast:#F4F4F5; --toast-fg:#000000; --toast-a:#000000; --allcard:#1C1C1E; --wcard:#161618; --wcard2:#060606; --g1:#F4F4F5; --g2:#C8C8CC; --g3:#A2A2A7; --g4:#7E7E83; --g5:#606064; --g6:#4A4A4D; --g7:#38383B; --g8:#2A2A2C; color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -417,6 +403,72 @@ body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)
 .gstat b.warn{color:var(--warn)}.gstat b.over{color:var(--neg)}
 .brow.none .bar{opacity:.4}
 .linkbtn{color:var(--accent);font-weight:600;font-size:14px;padding:8px 4px}
+/* ===== монохром ===== */
+.lt{font-weight:700;letter-spacing:-.025em}
+.list,.card,.st,.promo,.mini,.form,.cell,.soon,.alertrow,.gstat > div,.allrow,.colors{box-shadow:inset 0 0 0 1px var(--sep)}
+.list,.card,.promo,.mini,.soon,.form,.colors{border-radius:14px}
+.st{border-radius:14px}
+.cell{border-radius:12px}
+.btn{border-radius:11px}
+.btn.soft{background:var(--card);box-shadow:inset 0 0 0 1px var(--sep)}
+.btn.danger{box-shadow:inset 0 0 0 1px var(--sep)}
+.save{border-radius:12px}
+.kp{border-radius:14px}
+.layer{border-radius:18px 18px 0 0}
+.seg{border-radius:10px}.seg button{border-radius:8px}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg);box-shadow:none}
+.ci{background:var(--card2)!important;color:var(--fg)!important;border-radius:11px;box-shadow:inset 0 0 0 1px var(--sep)}
+.cg .ci{opacity:1}
+.cg[aria-pressed="true"] .ci{background:var(--fg)!important;color:var(--bg)!important;box-shadow:none;transform:none}
+.cg[aria-pressed="true"]{color:var(--fg)}
+.am.pos,.pos{color:var(--fg)}
+.am.trc{color:var(--fg2)}
+.st .dot{background:var(--card2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--sep)}
+.amtp{background:var(--card)!important;box-shadow:inset 0 0 0 1px var(--sep);border-radius:14px}
+.tseg button[aria-pressed="true"]{color:var(--bg);background:var(--fg)}
+.wcard{background:linear-gradient(155deg,var(--wcard2) 0%,var(--wcard) 100%)!important;color:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)!important;border-radius:18px}
+.wcard::after{display:none}
+.wcard .wc-ic{background:rgba(255,255,255,.08);color:color-mix(in srgb,var(--c) 75%,#FFFFFF);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.wcard[data-id="all"] .wc-ic{color:#FFFFFF}
+.wcard .wc-ed,.carcard .kmbtn{background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.wcard .wc-l{opacity:.6;text-transform:uppercase;letter-spacing:.08em;font-size:11px;font-weight:600}
+.wcard .wc-b{font-weight:600;letter-spacing:-.03em}
+.wcard:not(.on){opacity:.5}
+.wcard.add{background:var(--card)!important;color:var(--fg2);box-shadow:inset 0 0 0 1px var(--sep)!important}
+.dots i.on{background:var(--fg)}
+.tabbar{background:var(--bar);border-top:1px solid var(--sep)}
+.tab[aria-current="page"]{color:var(--fg)}
+.tab{color:var(--g5)}
+.tab[aria-current="page"]{color:var(--fg)!important}
+.addkey{border-radius:15px;background:var(--accent);color:var(--on-accent)}
+.mini .ap{background:#0A0A0A;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);border-radius:12px}
+.mini .cnt{background:var(--fg);color:var(--bg)}
+.mini .cnt.over{background:var(--neg);color:#FFFFFF}
+.soon{background:var(--card)}
+.soon .sh{color:var(--fg2);text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+.soon .sh .i{color:var(--warn)}
+.alertrow{background:var(--card)}
+.duechip{color:var(--bg);background:var(--fg)}
+.chip.ok{color:var(--fg2);background:var(--fill)}
+.chip.mute{color:var(--fg2);background:transparent;box-shadow:inset 0 0 0 1px var(--sep)}
+.radio.on{border-color:var(--fg)}.radio.on::after{background:var(--fg)}
+.tg[aria-checked="true"]{background:var(--accent)}
+.tg[aria-checked="true"]::after{background:var(--on-accent)}
+.chipsel button{box-shadow:inset 0 0 0 1px var(--sep)}
+.preset{box-shadow:inset 0 0 0 1px var(--sep)}
+.carsw button{box-shadow:inset 0 0 0 1px var(--sep)}
+.carsw button[aria-pressed="true"]{box-shadow:none}
+.toast{border-radius:12px}
+.empty .art{background:var(--card2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--sep);border-radius:16px}
+.sec,.dayh{letter-spacing:.08em;font-size:11px}
+.sech h2,.donut-c b,.bhero .big,.subhero .big,.big{letter-spacing:-.03em}
+.sw2.mono{background:linear-gradient(135deg,#FFFFFF 0 50%,#0A0A0A 50% 100%);box-shadow:inset 0 0 0 1px var(--sep)}
+.sw2[aria-pressed="true"]{box-shadow:0 0 0 2px var(--card),0 0 0 4px var(--fg)}
+.picks button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--fg)}
+.txtbtn{color:var(--fg)}
+.txtbtn.l{color:var(--fg2)}
+.linkbtn,.more,.addrow{color:var(--fg)}
+.setrow.link .tx{color:var(--fg)}
 @media (max-height:700px){
   .layer.full{top:calc(env(safe-area-inset-top,0px) + 8px)}
   #l2 .ed{gap:7px} #l2 .lhead{min-height:40px}
@@ -779,8 +831,8 @@ function seedDemo(){
 }
 
 /* ================= тема и цвета ================= */
-const ACCENTS=[['#34D1A6','Мята'],['#0A84FF','Синий'],['#5E5CE6','Индиго'],['#BF5AF2','Фиолетовый'],['#FF375F','Малиновый'],['#FF9F0A','Оранжевый'],['#FFD60A','Жёлтый'],['#30D158','Зелёный'],['#64D2FF','Голубой'],['#E8E8ED','Белый']];
-const TONES=[['graphite','Графит',null,'#0E1012','#181B1F'],['black','Чёрный','#000000','#000000','#161616'],['navy','Ночной синий','#3E63DD'],['plum','Сливовый','#8E4EC6'],['forest','Лесной','#0B8F6E'],['warm','Тёплый','#A0522D'],['rose','Розовый','#D6409F']];
+const ACCENTS=[['','Моно'],['#34D1A6','Мята'],['#0A84FF','Синий'],['#5E5CE6','Индиго'],['#BF5AF2','Фиолетовый'],['#FF375F','Малиновый'],['#FF9F0A','Оранжевый'],['#FFD60A','Жёлтый'],['#30D158','Зелёный'],['#64D2FF','Голубой']];
+const TONES=[['graphite','Стандарт',null,'#000000','#1A1A1C'],['black','Чёрный','#000000','#000000','#161616'],['navy','Ночной синий','#3E63DD'],['plum','Сливовый','#8E4EC6'],['forest','Лесной','#0B8F6E'],['warm','Тёплый','#A0522D'],['rose','Розовый','#D6409F']];
 function hexLum(h){const n=parseInt(h.slice(1),16),c=[n>>16&255,n>>8&255,n&255].map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);});return .2126*c[0]+.7152*c[1]+.0722*c[2];}
 function toneVars(t){
   if(t==='black')return{l:null,d:'--bg:#000000;--card:#161616;--card2:#1F1F1F;--bar:rgba(0,0,0,.9);'};
@@ -1142,13 +1194,13 @@ function renderHomeBody(){
 /* ================= аналитика ================= */
 function donut(items,total){
   const R=78,C=2*Math.PI*R,Wd=22,gap=items.length>1?2.5:0;let off=0;
-  return `<svg class="donut" viewBox="0 0 200 200" role="img" aria-label="Распределение по категориям"><circle r="${R}" cx="100" cy="100" fill="none" stroke="var(--fill)" stroke-width="${Wd}"/>${items.map(it=>{const full=it.v/total*C,len=Math.max(.5,full-gap);const s=`<circle class="s" r="${R}" cx="100" cy="100" fill="none" stroke="${it.color}" stroke-width="${Wd}" style="stroke-dasharray:0 ${C}" data-dash="${len} ${C-len}" stroke-dashoffset="${-off}" transform="rotate(-90 100 100)"/>`;off+=full;return s;}).join('')}</svg>`;
+  return `<svg class="donut" viewBox="0 0 200 200" role="img" aria-label="Распределение по категориям"><circle r="${R}" cx="100" cy="100" fill="none" stroke="var(--fill)" stroke-width="${Wd}"/>${items.map(it=>{const full=it.v/total*C,len=Math.max(.5,full-gap);const s=`<circle class="s" r="${R}" cx="100" cy="100" fill="none" stroke-width="${Wd}" style="stroke:${it.color};stroke-dasharray:0 ${C}" data-dash="${len} ${C-len}" stroke-dashoffset="${-off}" transform="rotate(-90 100 100)"/>`;off+=full;return s;}).join('')}</svg>`;
 }
 const wChip=()=>{const w=curW()==='all'?ALLW:W(curW());return `<button class="chipbtn" data-a="openWallets">${esc(w.name)}${ic('down')}</button>`;};
 function renderStats(){
   const type=S.statType,all=viewTx(),m=inMonth(all,S.month),tot=catTotals(m,type);
   const total=Object.values(tot).reduce((a,b)=>a+b,0);
-  const items=Object.entries(tot).map(([id,v])=>({...catOf(id),v})).sort((a,b)=>b.v-a.v);
+  const items=Object.entries(tot).map(([id,v])=>({...catOf(id),v})).sort((a,b)=>b.v-a.v).map((it,i)=>({...it,color:`var(--g${Math.min(i,7)+1})`}));
   const d=parseISO(S.month+'-01'),isCur=S.month===ym(new Date());
   const days=isCur?new Date().getDate():new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
   const months=[];for(let k=5;k>=0;k--){const mm=shiftMonth(S.month,-k);months.push({m:mm,v:sumBy(inMonth(all,mm),type)});}
@@ -1214,12 +1266,12 @@ function renderSettings(){
     <div class="sec">Цвета</div>
     <div class="colors">
       <span class="cl">Акцент — кнопки, выделения, активные вкладки</span>
-      <div class="swr">${ACCENTS.map(([c,n])=>`<button class="sw2" data-a="accent" data-v="${c}" style="--c:${c}" aria-label="${n}" aria-pressed="${(S.settings.accent||'')===c}"></button>`).join('')}
+      <div class="swr">${ACCENTS.map(([c,n])=>`<button class="sw2 ${c?'':'mono'}" data-a="accent" data-v="${c}" style="--c:${c||'#000'}" aria-label="${n}" aria-pressed="${(S.settings.accent||'')===c}"></button>`).join('')}
         <label class="sw2 custom ${S.settings.accent&&!ACCENTS.some(x=>x[0]===S.settings.accent)?'set':''}" style="--c:${S.settings.accent||'#34D1A6'}" aria-label="Свой цвет акцента" aria-pressed="${!!S.settings.accent&&!ACCENTS.some(x=>x[0]===S.settings.accent)}"><input type="color" id="accCustom" value="${S.settings.accent||'#34D1A6'}"></label></div>
       <span class="cl">Фон — общий тон экранов</span>
       <div class="swr">${TONES.map(([k,n,T,b,c])=>`<button class="sw2 tone" data-a="tone" data-v="${k}" style="--b:${b||'color-mix(in srgb,'+T+' 16%,#08090A)'};--k:${c||'color-mix(in srgb,'+T+' 30%,#18191B)'}" aria-label="${n}" aria-pressed="${(S.settings.tone||'graphite')===k}"></button>`).join('')}
         <label class="sw2 custom ${S.settings.tone==='custom'?'set':''}" style="--c:${S.settings.toneColor||'#3E63DD'}" aria-label="Свой тон фона" aria-pressed="${S.settings.tone==='custom'}"><input type="color" id="toneCustom" value="${S.settings.toneColor||'#3E63DD'}"></label></div>
-      <span class="names">Радужный кружок — любой свой цвет. Тон фона заметнее в тёмной теме.</span>
+      <span class="names">Чёрно-белый кружок — стандартный монохром. Радужный кружок — любой свой цвет.</span>
       <button class="btn soft" data-a="resetColors" style="height:40px">Вернуть стандартные цвета</button>
     </div>
     <div class="sec">Резервная копия</div>
@@ -1233,7 +1285,7 @@ function renderSettings(){
     <div class="list">
       <div class="setrow"><span class="tx">Операций</span><span class="vv num">${S.tx.length}</span></div>
       <div class="setrow"><span class="tx">Где хранятся</span><span class="vv">Только на этом телефоне</span></div>
-      <div class="setrow"><span class="tx">Версия приложения</span><span class="vv num">13</span></div>
+      <div class="setrow"><span class="tx">Версия приложения</span><span class="vv num">14</span></div>
     </div>
     <button class="btn danger" data-a="wipe">Удалить все данные</button>
   </section>`;
@@ -1602,7 +1654,7 @@ const ACT={
   bSave:b=>budgetSave(b.dataset.id),
   bDel:b=>{delete S.budgets[b.dataset.id];saveBudgets();closeL(3);refresh();toast('Лимит убран');},
   theme:b=>{S.settings.theme=b.dataset.v;saveSettings();applyTheme();$$('[data-a="theme"]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===S.settings.theme));},
-  accent:b=>{S.settings.accent=b.dataset.v;saveSettings();applyColors();renderSettings();},
+  accent:b=>{S.settings.accent=b.dataset.v||null;saveSettings();applyColors();renderSettings();},
   tone:b=>{S.settings.tone=b.dataset.v;saveSettings();applyColors();renderSettings();},
   resetColors:()=>{S.settings.accent=null;S.settings.tone='graphite';saveSettings();applyColors();renderSettings();toast('Стандартные цвета');},
   export:()=>exportData(),
@@ -1634,6 +1686,7 @@ document.addEventListener('keydown',e=>{
   S.tx.forEach(t=>{if(!t.walletId||!W(t.walletId)){t.walletId=def;fix.push(t);}if(t.type==='tr'&&!W(t.toWallet)){t.toWallet=def;fix.push(t);}});
   if(fix.length)DB.putMany(fix);
   if(S.tx.length&&!S.settings.onboarded){S.settings.onboarded=true;saveSettings();}
+  if((S.settings.design||0)<2){S.settings.design=2;S.settings.accent=null;S.settings.tone='graphite';saveSettings();}
   const charged=processSubs();
   applyTheme();render();chargedToast(charged);updateBadge();
   document.addEventListener('visibilitychange',()=>{if(document.hidden)return;const c=processSubs();if(c.length){refresh();chargedToast(c);}else if(S.tab==='home')renderHomeBody();updateBadge();});

@@ -1,6 +1,6 @@
 // Офлайн-режим. Страница берётся из сети, если она доступна (так обновления приходят сразу),
 // и из сохранённой копии на телефоне, если интернета нет.
-const VERSION = 'moi-budget-v13';
+const VERSION = 'moi-budget-v15';
 const FILES = ['./', './index.html', './manifest.webmanifest', './apple-touch-icon.png', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
