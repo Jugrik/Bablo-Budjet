@@ -381,6 +381,32 @@ body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)
 .subprev .ci{width:52px;height:52px}.subprev .ci .i{width:26px;height:26px}
 .subprev b{font-size:18px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .subprev span{font-size:13px;color:var(--fg2)}
+.mini{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:18px;padding:12px 14px;width:100%;text-align:left;margin-top:10px}
+.mini .ap{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#FFFFFF;background:linear-gradient(140deg,#4C6EF5,#1D2B64);flex:none}
+.mini .ap .i{width:24px;height:24px}
+.mini .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.mini .tx b{font-size:16px}
+.mini .tx span{font-size:13px;color:var(--fg2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini .cnt{min-width:24px;height:24px;border-radius:12px;padding:0 7px;display:grid;place-items:center;font-size:12px;font-weight:700;color:#1A1200;background:var(--warn)}
+.mini .cnt.over{background:var(--neg);color:#FFFFFF}
+.mini .go{width:16px;height:16px;color:var(--fg2)}
+.carcard{flex:none;width:100%;max-width:none;cursor:default;min-height:150px}
+.carcard .row2{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;position:relative;z-index:1;margin-top:auto}
+.carcard .kmbtn{height:36px;padding:0 12px;border-radius:11px;background:rgba(255,255,255,.18);color:#FFFFFF;font-size:14px;font-weight:600;white-space:nowrap}
+.carsw{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.carsw::-webkit-scrollbar{display:none}
+.carsw button{flex:none;height:34px;padding:0 13px;border-radius:17px;background:var(--card);font-size:14px;font-weight:600;color:var(--fg2)}
+.carsw button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.chipsel{display:flex;flex-wrap:wrap;gap:7px}
+.chipsel button{min-height:34px;padding:6px 12px;border-radius:17px;background:var(--card);font-size:13.5px;font-weight:500;text-align:left;line-height:1.25}
+.chipsel button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);font-weight:600}
+.gstat{display:flex;gap:8px}
+.gstat > div{flex:1;background:var(--card);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.gstat span{font-size:12px;color:var(--fg2)}
+.gstat b{font-family:var(--round);font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gstat b.warn{color:var(--warn)}.gstat b.over{color:var(--neg)}
+.brow.none .bar{opacity:.4}
+.linkbtn{color:var(--accent);font-weight:600;font-size:14px;padding:8px 4px}
 @media (max-height:700px){
   .layer.full{top:calc(env(safe-area-inset-top,0px) + 8px)}
   #l2 .ed{gap:7px} #l2 .lhead{min-height:40px}
@@ -455,6 +481,24 @@ const P={
   star:'<path d="m12 4 2.4 5 5.4.6-4 3.7 1.1 5.4L12 16l-4.9 2.7 1.1-5.4-4-3.7 5.4-.6z"/>',
   wifi:'<path d="M4 9.5a12 12 0 0 1 16 0M7 13a7.5 7.5 0 0 1 10 0M10 16.5a3 3 0 0 1 4 0"/><circle cx="12" cy="19.5" r=".8"/>',
   bell:'<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
+  wrench:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/>',
+  droplet:'<path d="M12 3.5s6 6.2 6 10.5a6 6 0 0 1-12 0c0-4.3 6-10.5 6-10.5z"/>',
+  filter:'<path d="M4 5h16l-6 7.5V19l-4 1.5v-8z"/>',
+  zap:'<path d="M13 3 5 13.5h6l-1 7.5 8-10.5h-6z"/>',
+  thermo:'<path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/>',
+  disc:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/>',
+  battery:'<rect x="3.5" y="7.5" width="15" height="10" rx="2"/><path d="M21 11v3M7 12.5h3M8.5 11v3M13 12.5h3"/>',
+  tire:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 3.5V8M12 16v4.5M3.5 12H8M16 12h4.5"/>',
+  wiper:'<path d="M12 20.5 6 7"/><path d="M3.5 9c4.5-3.5 12.5-3.5 17 0"/>',
+  snow:'<path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/>',
+  target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/>',
+  shield:'<path d="M12 3.5 5 6v5.5c0 4.3 3 7.6 7 9 4-1.4 7-4.7 7-9V6z"/>',
+  doc:'<path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20z"/><path d="M14 3.5V8h4M9.5 12.5h5M9.5 16h5"/>',
+  spring:'<path d="M7 4h10M7 20h10M8 7l8 2-8 2 8 2-8 2 8 2"/>',
+  cog:'<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>',
+  steer:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2"/><path d="M12 14v6.5M10.2 11 4 9.5M13.8 11 20 9.5"/>',
+  belt:'<circle cx="7" cy="12" r="3.5"/><circle cx="17.5" cy="8" r="2.5"/><path d="M7 8.5l10.5-3M7 15.5l10.5-5"/>',
+  share:'<path d="M12 15V3.5M7.5 8 12 3.5 16.5 8"/><path d="M5 12v7a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19v-7"/>',
   receipt:'<path d="M6 3.5h12v17l-2-1.3-2 1.3-2-1.3-2 1.3-2-1.3-2 1.3z"/><path d="M9 8h6M9 11.5h6M9 15h4"/>'
 };
 const ic=(n,cls)=>`<svg class="i${cls?' '+cls:''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]||P.box}</svg>`;
@@ -465,6 +509,7 @@ const CATS={
     {id:'food',name:'Продукты',icon:'cart',color:'#E8890C'},
     {id:'cafe',name:'Кафе',icon:'cup',color:'#E5484D'},
     {id:'transport',name:'Транспорт',icon:'car',color:'#C99400'},
+    {id:'car',name:'Машина',icon:'wrench',color:'#0E7490'},
     {id:'home',name:'Дом',icon:'home',color:'#6E56CF'},
     {id:'bills',name:'Связь, счета',icon:'phone',color:'#3E63DD'},
     {id:'subs',name:'Подписки',icon:'repeat',color:'#5B5BD6'},
@@ -543,12 +588,13 @@ const DB=(()=>{
 })();
 
 /* ================= состояние ================= */
-const S={tx:[],budgets:{},wallets:[],subs:[],budTab:'limits',settings:{theme:'system',demo:false,seeded:false,onboarded:false,wallet:'all'},
+const S={tx:[],budgets:{},wallets:[],subs:[],garage:{cars:[],logs:[],current:null},gTab:'service',budTab:'limits',settings:{theme:'system',demo:false,seeded:false,onboarded:false,wallet:'all'},
   month:ym(new Date()),tab:'home',statType:'exp',limit:40,q:'',lastId:null,sheet:null};
 const saveBudgets=()=>DB.set('budgets',S.budgets);
 const saveSettings=()=>DB.set('settings',S.settings);
 const saveWallets=()=>DB.set('wallets',S.wallets);
 const saveSubs=()=>DB.set('subs',S.subs);
+const saveGarage=()=>DB.set('garage',S.garage);
 
 /* ================= подписки ================= */
 const CUR={KZT:'₸',USD:'$',RUB:'₽'};
@@ -581,9 +627,93 @@ function processSubs(){
   return created;
 }
 const upcoming=()=>S.subs.filter(x=>x.active&&daysUntil(x.next)>=0&&daysUntil(x.next)<=2).sort((a,b)=>a.next<b.next?-1:1);
-function updateBadge(){try{if(!('setAppBadge' in navigator))return;const n=S.settings.badge?upcoming().length:0;if(n)navigator.setAppBadge(n).catch(()=>{});else navigator.clearAppBadge().catch(()=>{});}catch(e){}}
+function updateBadge(){try{if(!('setAppBadge' in navigator))return;const n=S.settings.badge?upcoming().length+garageAlerts().length:0;if(n)navigator.setAppBadge(n).catch(()=>{});else navigator.clearAppBadge().catch(()=>{});}catch(e){}}
 function soonHtml(){const u=upcoming();if(!u.length)return '';
   return `<button class="soon" data-a="goSubs"><span class="sh">${ic('bell')}Скоро спишется</span>${u.slice(0,3).map(x=>`<span class="sl">${ciC(x)}<span class="d">${dueLabel(x.next)}</span><span class="n">${esc(x.name)}</span><span class="a num">${fmtCur(x.amount,x.currency)}</span></span>`).join('')}${u.length>3?`<span class="sl" style="color:var(--fg2);font-size:13px">и ещё ${u.length-3}</span>`:''}</button>`;}
+/* ================= авто-гараж: справочник ================= */
+const GPARTS=[
+ ['Двигатель',[
+  ['oil','Моторное масло и масляный фильтр','droplet',8000,12,1],
+  ['airf','Воздушный фильтр двигателя','filter',15000,12,1],
+  ['cabin','Салонный фильтр','filter',15000,12,1],
+  ['fuelf','Топливный фильтр','filter',30000,24,1],
+  ['spark','Свечи зажигания','zap',30000,36,1],
+  ['glow','Свечи накаливания (дизель)','zap',60000,0,0],
+  ['timing','Ремень ГРМ с роликами и помпой','belt',60000,60,1],
+  ['chain','Цепь ГРМ (проверка)','belt',120000,0,0],
+  ['drive','Приводной ремень генератора','belt',60000,48,1],
+  ['coolant','Антифриз','thermo',60000,36,1],
+  ['valves','Регулировка клапанов','wrench',80000,0,0]]],
+ ['Трансмиссия',[
+  ['atf','Масло АКПП или вариатора','cog',60000,48,1],
+  ['mtf','Масло МКПП','cog',80000,60,0],
+  ['diff','Масло в редукторах и раздатке (4×4)','cog',60000,48,0],
+  ['clutch','Сцепление','cog',120000,0,0]]],
+ ['Тормоза',[
+  ['brakef','Тормозная жидкость','droplet',40000,24,1],
+  ['padsF','Передние тормозные колодки','disc',30000,0,1],
+  ['padsR','Задние тормозные колодки','disc',50000,0,1],
+  ['discF','Передние тормозные диски','disc',80000,0,1],
+  ['discR','Задние тормозные диски','disc',100000,0,1]]],
+ ['Подвеска и рулевое',[
+  ['align','Развал-схождение','target',15000,12,1],
+  ['chassis','Диагностика ходовой','wrench',15000,12,1],
+  ['shocks','Амортизаторы','spring',80000,0,1],
+  ['psf','Жидкость ГУР','steer',60000,36,0]]],
+ ['Шины, электрика, прочее',[
+  ['season','Сезонная смена шин','tire',0,6,1],
+  ['tires','Замена шин','tire',50000,60,1],
+  ['battery','Аккумулятор','battery',0,48,1],
+  ['wipers','Щётки стеклоочистителя','wiper',0,12,1],
+  ['ac','Обслуживание кондиционера','snow',0,24,1]]]
+];
+const GP={};GPARTS.forEach(([g,list])=>list.forEach(([k,n,i,km,mo,on])=>GP[k]={k,n,i,km,mo,on:!!on,g}));
+const GDOCS=[['ins','Страховка ОГПО','shield'],['kasko','КАСКО','shield'],['inspect','Техосмотр','doc'],['tax','Налог на транспорт','doc'],['license','Водительское удостоверение','doc']];
+const GD=Object.fromEntries(GDOCS.map(([k,n,i])=>[k,{k,n,i}]));
+const CARCOLORS=['#3E63DD','#0B8F6E','#E5484D','#8E4EC6','#E8890C','#0D9FB5','#4B5563','#D6409F'];
+const nfKm=n=>nf.format(Math.round(n))+' км';
+const addMonths=(ds,n)=>{const d=parseISO(ds),y=d.getFullYear(),m=d.getMonth()+n,yy=y+Math.floor(m/12),mm=((m%12)+12)%12;return iso(new Date(yy,mm,Math.min(d.getDate(),dim(yy,mm))));};
+const fullDate=ds=>{const d=parseISO(ds);return pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear();};
+function plural(n,a,b,c){n=Math.abs(n)%100;const n1=n%10;if(n>10&&n<20)return c;if(n1>1&&n1<5)return b;if(n1===1)return a;return c;}
+const daysTxt=n=>n+' '+plural(n,'день','дня','дней');
+function timeTxt(days){const a=Math.abs(days);if(a<45)return daysTxt(a);const m=Math.round(a/30.44);return m+' '+plural(m,'месяц','месяца','месяцев');}
+const GG=()=>S.garage;
+const curCar=()=>GG().cars.find(c=>c.id===GG().current)||GG().cars[0]||null;
+const partCfg=(car,k)=>Object.assign({},GP[k],(car.parts||{})[k]||{});
+function partLast(car,k){
+  let best=null;GG().logs.forEach(l=>{if(l.carId===car.id&&(l.items||[]).includes(k)&&(!best||l.date>best.date||(l.date===best.date&&(+l.km||0)>(+best.km||0))))best=l;});
+  if(best)return{km:+best.km||null,date:best.date,src:'log'};
+  const c=(car.parts||{})[k]||{};if(c.baseKm!=null||c.baseDate)return{km:c.baseKm!=null?+c.baseKm:null,date:c.baseDate||null,src:'base'};
+  return null;
+}
+function partState(car,k){
+  const cfg=partCfg(car,k),last=partLast(car,k);
+  if(!last)return{cfg,st:'none',frac:0,text:'Укажите, когда меняли последний раз'};
+  let fk=0,fd=0,kmLeft=null,dLeft=null,due=null;
+  if(cfg.km&&last.km!=null){kmLeft=last.km+cfg.km-car.mileage;fk=(car.mileage-last.km)/cfg.km;}
+  if(cfg.mo&&last.date){due=addMonths(last.date,cfg.mo);dLeft=daysUntil(due);fd=1-dLeft/(cfg.mo*30.44);}
+  const frac=Math.max(fk,fd,0),st=frac>=1?'over':frac>=.8?'warn':'ok';
+  const parts=[];
+  if(kmLeft!=null)parts.push(kmLeft>=0?'осталось '+nfKm(kmLeft):'просрочено на '+nfKm(-kmLeft));
+  if(dLeft!=null)parts.push(dLeft>=0?(kmLeft!=null?'или ':'осталось ')+timeTxt(dLeft):(kmLeft!=null?'или ':'')+'срок прошёл '+timeTxt(dLeft)+' назад');
+  let text=parts.join(' ');if(!text)text='Замена '+fullDate(last.date||today());
+  text=text.charAt(0).toUpperCase()+text.slice(1);
+  return{cfg,st,frac,text,kmLeft,dLeft,due,last};
+}
+function docState(car,k){const d=((car.docs||{})[k]||{}).until;if(!d)return{st:'none',text:'Не указано'};const n=daysUntil(d);
+  return{st:n<0?'over':n<=30?'warn':'ok',until:d,n,text:n<0?'Истёк '+timeTxt(n)+' назад':n===0?'Истекает сегодня':'До '+fullDate(d)+' · осталось '+timeTxt(n)};}
+function garageAlerts(car){
+  const out=[];const cars=car?[car]:GG().cars;
+  cars.forEach(c=>{Object.keys(GP).forEach(k=>{const cfg=partCfg(c,k);if(!cfg.on)return;const s=partState(c,k);if(s.st==='warn'||s.st==='over')out.push({car:c,kind:'p',name:cfg.n,st:s.st,text:s.text,rank:s.frac});});
+    GDOCS.forEach(([k,n])=>{const s=docState(c,k);if(s.st==='warn'||s.st==='over')out.push({car:c,kind:'d',name:n,st:s.st,text:s.text,rank:s.st==='over'?2:1.5});});});
+  return out.sort((a,b)=>b.rank-a.rank);
+}
+function garageMini(){
+  const car=curCar();
+  if(!car)return `<button class="mini" data-a="openGarage"><span class="ap">${ic('car')}</span><span class="tx"><b>Авто-гараж</b><span>Пробег, замена масла, страховка, история ремонтов</span></span>${ic('right','go')}</button>`;
+  const al=garageAlerts(car),over=al.some(a=>a.st==='over');
+  return `<button class="mini" data-a="openGarage"><span class="ap">${ic('car')}</span><span class="tx"><b>Авто-гараж</b><span>${al.length?esc(al[0].name)+': '+esc(al[0].text.toLowerCase()):esc(car.name)+' · '+nfKm(car.mileage)}</span></span>${al.length?`<span class="cnt ${over?'over':''}">${al.length}</span>`:''}${ic('right','go')}</button>`;
+}
 function chargedToast(c){if(!c.length)return;toast(c.length===1?'Списано: '+c[0].note.split(' · ')[0]+' '+money(c[0].amount):'Списано платежей: '+c.length);}
 const newWallet=o=>Object.assign({id:'w_'+uid(),name:'Кошелек',icon:'wallet',color:'#0B8F6E',initial:0,created:Date.now()},o||{});
 const W=id=>S.wallets.find(w=>w.id===id);
@@ -632,7 +762,10 @@ function seedDemo(){
   const dd=k=>{const d=new Date();d.setDate(d.getDate()+k);return iso(d);};
   const mk=(name,icon,color,amount,currency,period,k,auto)=>{const n=dd(k);return{id:'s_'+uid(),name,icon,color,amount,currency,period,next:n,anchor:parseISO(n).getDate(),walletId:card.id,auto,active:true};};
   const subs=[mk('Spotify','music','#30A46C',2290,'KZT','month',1,true),mk('Яндекс Плюс','star','#E8890C',399,'RUB','month',2,true),mk('iCloud+','cloud','#3E63DD',0.99,'USD','month',9,true),mk('Спортзал','dumbbell','#0D9FB5',15000,'KZT','month',14,false),mk('Интернет','wifi','#8E4EC6',8990,'KZT','month',20,true),mk('Telegram Premium','send','#0090FF',35.99,'USD','year',120,true)];
-  return{wallets:[card,cash],tx:out,subs};
+  const car={id:'c_demo',name:'Toyota Camry',year:'2018',plate:'',color:'#3E63DD',mileage:128450,mileageDate:dd(0),parts:{oil:{},airf:{baseKm:121050,baseDate:dd(-120)},cabin:{baseKm:121050,baseDate:dd(-120)},spark:{baseKm:105000,baseDate:dd(-700)},timing:{baseKm:90000,baseDate:dd(-1300)},drive:{baseKm:100000,baseDate:dd(-900)},coolant:{baseKm:110000,baseDate:dd(-700)},atf:{baseKm:100000,baseDate:dd(-900)},brakef:{baseKm:110000,baseDate:dd(-690)},padsR:{baseKm:95000,baseDate:dd(-1000)},discF:{baseKm:90000,baseDate:dd(-1300)},discR:{baseKm:90000,baseDate:dd(-1300)},align:{baseKm:121000,baseDate:dd(-200)},chassis:{baseKm:121000,baseDate:dd(-200)},shocks:{baseKm:90000,baseDate:dd(-1300)},season:{baseDate:dd(-170)},tires:{baseKm:110000,baseDate:dd(-500)},battery:{baseDate:dd(-1100)},wipers:{baseDate:dd(-200)},ac:{baseDate:dd(-400)},fuelf:{baseKm:115000,baseDate:dd(-300)}},docs:{ins:{until:dd(18)},inspect:{until:dd(160)},tax:{until:dd(60)}}};
+  const glogs=[{id:'g_d1',carId:car.id,date:dd(-120),km:121050,items:['oil'],title:'',cost:28000,place:'СТО на Абая',walletId:card.id},{id:'g_d2',carId:car.id,date:dd(-40),km:126300,items:['padsF'],title:'',cost:24500,place:'СТО на Абая',walletId:card.id}];
+  glogs.forEach(l=>{if(parseISO(l.date).getMonth()===now.getMonth()||true){const t={id:uid(),ts:Date.now(),type:'exp',amount:l.cost,cat:'car',walletId:card.id,date:l.date,note:car.name+': '+(l.items.map(k=>GP[k].n).join(', ')),garageId:l.id};out.push(t);l.txId=t.id;}});
+  return{wallets:[card,cash],tx:out,subs,garage:{cars:[car],logs:glogs,current:car.id}};
 }
 
 /* ================= тема и цвета ================= */
@@ -739,6 +872,183 @@ function subSave(){
   if(c.length)chargedToast(c);else toast('Платёж сохранён');
 }
 
+/* ================= авто-гараж: экраны ================= */
+function openGarage(){S.sheet='garage';$('#l1').classList.add('full');drawGarage(true);}
+function drawGarage(first){
+  const el=$('#l1'),keep=el.scrollTop,car=curCar();
+  const head=`<div class="lhead"><button class="txtbtn l" data-a="close" data-l="1">Закрыть</button><h2>Авто-гараж</h2><span class="r">${car?`<button class="txtbtn b" data-a="carEdit" aria-label="Добавить машину">${ic('plus')}</button>`:''}</span></div>`;
+  if(!car){openL(1,head+`<div class="stack"><div class="empty" style="padding-top:20px"><span class="art">${ic('car')}</span><b>Добавьте машину</b><p>Укажите пробег. Приложение подскажет, когда менять масло, фильтры, колодки и другие расходники, напомнит про страховку и сохранит историю ремонтов.</p></div><button class="btn main" data-a="carEdit" style="width:100%;height:50px">Добавить машину</button></div>`);return;}
+  const al=garageAlerts(car),pc=al.filter(a=>a.kind==='p').length,dc=al.filter(a=>a.kind==='d').length,spent=GG().logs.filter(l=>l.carId===car.id).reduce((a,l)=>a+(+l.cost||0),0);
+  let body='';
+  if(S.gTab==='service'){
+    const groups=GPARTS.map(([g,list])=>{const rows=list.map(x=>x[0]).filter(k=>partCfg(car,k).on).map(k=>({k,s:partState(car,k)}));return{g,rows};}).filter(x=>x.rows.length);
+    const colr=st=>st==='over'?'var(--neg)':st==='warn'?'var(--warn)':st==='ok'?'var(--pos)':'var(--fg3)';
+    body=`<button class="btn main" data-a="svcNew" style="width:100%;height:50px">${ic('wrench')}Записать обслуживание</button>`+
+      groups.map(({g,rows})=>`<div class="sec">${g}</div><div class="list">${rows.sort((a,b)=>b.s.frac-a.s.frac).map(({k,s})=>`<button class="brow ${s.st==='none'?'none':''}" data-a="partOpen" data-k="${k}" style="--c:${colr(s.st)}"><span class="h">${ciC({icon:s.cfg.i,color:'#4C5563'}).replace('--c:#4C5563','--c:'+(s.st==='over'?'var(--neg)':s.st==='warn'?'var(--warn)':'#4B5563'))}<span class="nm"><b>${esc(s.cfg.n)}</b><span>${esc(s.text)}</span></span>${s.st==='over'?'<span class="chip over">Пора</span>':s.st==='warn'?'<span class="chip warn">Скоро</span>':s.st==='none'?'<span class="chip mute">Указать</span>':''}</span><span class="bar"><i data-w="${Math.min(100,Math.max(s.st==='none'?0:3,s.frac*100))}"></i></span></button>`).join('')}</div>`).join('')+
+      `<button class="btn soft" data-a="partsSetup" style="width:100%;margin-top:4px">Настроить список расходников</button><p class="note">Интервалы стоят средние по рекомендациям производителей. Для вашей машины их можно изменить: нажмите на расходник.</p>`;
+  }else if(S.gTab==='docs'){
+    body=`<div class="list">${GDOCS.map(([k,n,i])=>{const d=docState(car,k);return `<button class="row" data-a="docOpen" data-k="${k}">${ciC({icon:i,color:d.st==='over'?'#E5484D':d.st==='warn'?'#E08A00':'#4B5563'})}<span class="tx"><span class="t1">${esc(n)}</span><span class="t2">${esc(d.text)}</span></span>${d.st==='over'?'<span class="chip over">Истёк</span>':d.st==='warn'?'<span class="chip warn">Скоро</span>':d.st==='none'?'<span class="chip mute">Указать</span>':''}</button>`;}).join('')}</div><p class="note">Напоминание появится за 30 дней до окончания. При продлении можно сразу записать расход в бюджет.</p>`;
+  }else{
+    const logs=GG().logs.filter(l=>l.carId===car.id).sort((a,b)=>a.date<b.date?1:a.date>b.date?-1:(+b.km||0)-(+a.km||0));
+    body=`<div class="gstat"><div><span>Потрачено на машину</span><b class="num">${money(spent)}</b></div><div><span>Записей</span><b class="num">${logs.length}</b></div></div>
+      <div style="display:flex;gap:8px"><button class="btn main" data-a="svcNew" style="flex:1">${ic('plus')}Добавить</button><button class="btn soft" data-a="shareHist" style="flex:1">${ic('share')}Поделиться</button></div>
+      ${logs.length?`<div class="list">${logs.map(l=>`<button class="row" data-a="svcEdit" data-id="${l.id}">${ciC({icon:l.doc?GD[l.doc].i:(l.items&&l.items[0]&&GP[l.items[0]]?GP[l.items[0]].i:'wrench'),color:'#0E7490'})}<span class="tx"><span class="t1">${esc(logTitle(l))}</span><span class="t2">${fullDate(l.date)}${l.km?' · '+nfKm(l.km):''}${l.place?' · '+esc(l.place):''}</span></span>${+l.cost?`<span class="am num">${money(+l.cost)}</span>`:''}</button>`).join('')}</div>`
+      :`<div class="list"><div class="empty"><span class="art">${ic('doc')}</span><b>Истории пока нет</b><p>Записывайте каждое обслуживание. При продаже машины эту историю можно отправить покупателю кнопкой «Поделиться».</p></div></div>`}`;
+  }
+  const cars=GG().cars;
+  openL(1,head+`<div class="stack">
+    ${cars.length>1?`<div class="carsw">${cars.map(c=>`<button data-a="carPick" data-id="${c.id}" aria-pressed="${c.id===car.id}">${esc(c.name)}</button>`).join('')}</div>`:''}
+    <div class="wcard on carcard" style="--c:${car.color||'#3E63DD'}">
+      <div class="wc-top"><span class="wc-ic">${ic('car')}</span><span class="wc-n">${esc(car.name)}${car.year?' · '+esc(car.year):''}</span><button class="wc-ed" data-a="carEdit" data-id="${car.id}" aria-label="Изменить машину">${ic('pen')}</button></div>
+      <div class="row2"><div><div class="wc-l">Пробег</div><div class="wc-b num">${nfKm(car.mileage)}</div><div class="wc-f">${car.plate?esc(car.plate)+' · ':''}обновлён ${shortDate(car.mileageDate||today()).toLowerCase()}</div></div><button class="kmbtn" data-a="kmEdit">Обновить пробег</button></div>
+    </div>
+    <div class="seg" role="group" aria-label="Раздел"><button data-a="gTab" data-t="service" aria-pressed="${S.gTab==='service'}">ТО${pc?' · '+pc:''}</button><button data-a="gTab" data-t="docs" aria-pressed="${S.gTab==='docs'}">Документы${dc?' · '+dc:''}</button><button data-a="gTab" data-t="history" aria-pressed="${S.gTab==='history'}">История</button></div>
+    ${body}
+  </div>`);
+  if(!first)el.scrollTop=keep;
+  growBars(el);
+}
+function logTitle(l){const names=(l.items||[]).map(k=>GP[k]?GP[k].n:k);if(l.doc)names.unshift(GD[l.doc].n+': продление');if(l.title)names.push(l.title);return names.join(', ')||'Обслуживание';}
+
+/* ---- машина ---- */
+let CE=null;
+function openCarEdit(id){
+  const c=id?GG().cars.find(x=>x.id===id):null;CE={id:c?c.id:null,color:c?c.color:CARCOLORS[GG().cars.length%CARCOLORS.length]};
+  openL(3,`<div class="lhead"><button class="txtbtn l" data-a="close" data-l="3">Отмена</button><h2>${c?'Машина':'Новая машина'}</h2><button class="txtbtn b r" data-a="carSave">Готово</button></div>
+  <div class="stack">
+    <div class="form">
+      <div class="field"><label for="cName">Марка и модель</label><input id="cName" maxlength="30" placeholder="Toyota Camry" value="${esc(c?c.name:'')}"></div>
+      <div class="field"><label for="cYear">Год</label><input id="cYear" inputmode="numeric" maxlength="4" placeholder="2018" value="${esc(c?c.year||'':'')}"></div>
+      <div class="field"><label for="cPlate">Госномер</label><input id="cPlate" maxlength="12" placeholder="Необязательно" value="${esc(c?c.plate||'':'')}"></div>
+      <div class="field"><label for="cKm">Пробег сейчас</label><input id="cKm" inputmode="numeric" placeholder="0" value="${c?Math.round(c.mileage):''}"><span class="u">км</span></div>
+    </div>
+    <div class="sec" style="padding-top:2px">Цвет карточки</div>
+    <div class="picks">${CARCOLORS.map(x=>`<button class="sw" data-a="carColor" data-v="${x}" style="--c:${x}" aria-pressed="${CE.color===x}" aria-label="Цвет"></button>`).join('')}</div>
+    ${c?`<button class="btn danger" data-a="carDel">Удалить машину и её историю</button>`:''}
+  </div>`);
+}
+function carSave(){
+  const name=$('#cName').value.trim(),km=parseAmount($('#cKm').value);
+  if(!name){toast('Введите марку и модель');return;}
+  const rec={name,year:$('#cYear').value.trim(),plate:$('#cPlate').value.trim(),color:CE.color};
+  if(CE.id){const c=GG().cars.find(x=>x.id===CE.id);Object.assign(c,rec);if(km!==c.mileage){c.mileage=km;c.mileageDate=today();}}
+  else{const c=Object.assign({id:'c_'+uid(),mileage:km,mileageDate:today(),parts:{},docs:{}},rec);GG().cars.push(c);GG().current=c.id;}
+  saveGarage();closeL(3);drawGarage();renderMaybe();toast('Сохранено');
+}
+function openKm(){const c=curCar();
+  openL(3,`<div class="lhead"><button class="txtbtn l" data-a="close" data-l="3">Отмена</button><h2>Пробег</h2><button class="txtbtn b r" data-a="kmSave">Готово</button></div>
+  <div class="stack"><div class="bigin"><input id="kmIn" inputmode="numeric" autocomplete="off" placeholder="${Math.round(c.mileage)}" aria-label="Пробег"><span>км</span></div>
+  <p class="note">Сейчас: ${nfKm(c.mileage)}, указан ${shortDate(c.mileageDate||today()).toLowerCase()}. Посмотрите одометр и впишите текущее значение.</p></div>`,
+  el=>{const i=el.querySelector('#kmIn');i.addEventListener('keydown',e=>{if(e.key==='Enter')kmSave();});setTimeout(()=>{try{i.focus();}catch(e){}},300);});}
+function kmSave(){const c=curCar(),v=parseAmount($('#kmIn').value);if(!(v>0)){toast('Введите пробег');return;}
+  const less=v<c.mileage;c.mileage=v;c.mileageDate=today();saveGarage();closeL(3);drawGarage();renderMaybe();updateBadge();
+  const al=garageAlerts(c);toast(less?'Пробег исправлен':al.length?'Пробег обновлён. Напоминаний: '+al.length:'Пробег обновлён');}
+
+/* ---- расходник ---- */
+let PK=null;
+function openPart(k){const car=curCar(),s=partState(car,k),c=(car.parts||{})[k]||{};PK=k;
+  const last=partLast(car,k);
+  openL(3,`<div class="lhead"><button class="txtbtn l" data-a="close" data-l="3">Отмена</button><h2>Расходник</h2><button class="txtbtn b r" data-a="partSave">Готово</button></div>
+  <div class="stack">
+    <div class="subprev">${ciC({icon:s.cfg.i,color:'#0E7490'})}<span style="display:flex;flex-direction:column;gap:2px;min-width:0"><b style="white-space:normal">${esc(s.cfg.n)}</b><span>${esc(s.text)}</span></span></div>
+    <button class="btn main" data-a="svcNew" data-k="${k}" style="width:100%;height:48px">${ic('wrench')}Отметить замену</button>
+    <div class="sec" style="padding-top:2px">Последняя замена</div>
+    ${last&&last.src==='log'?`<p class="note">По истории: ${fullDate(last.date)}${last.km!=null?', '+nfKm(last.km):''}. Чтобы изменить, отредактируйте запись в «Истории».</p>`:
+    `<div class="form"><div class="field"><label for="pKm">На пробеге</label><input id="pKm" inputmode="numeric" placeholder="Например, ${Math.max(0,Math.round(car.mileage-3000))}" value="${c.baseKm!=null?c.baseKm:''}"><span class="u">км</span></div>
+      <div class="field"><label for="pDate">Дата</label><input type="date" id="pDate" value="${c.baseDate||''}"></div></div>
+     <p class="note">Если не помните точно, укажите примерно. Можно указать только пробег или только дату.</p>`}
+    <div class="sec" style="padding-top:2px">Интервал замены</div>
+    <div class="form"><div class="field"><label for="pIntKm">Каждые</label><input id="pIntKm" inputmode="numeric" placeholder="не учитывать" value="${s.cfg.km||''}"><span class="u">км</span></div>
+      <div class="field"><label for="pIntMo">или каждые</label><input id="pIntMo" inputmode="numeric" placeholder="не учитывать" value="${s.cfg.mo||''}"><span class="u">мес</span></div></div>
+    <p class="note">Замена наступает по тому, что придёт раньше: пробег или время. По умолчанию: ${GP[k].km?nfKm(GP[k].km):'—'} / ${GP[k].mo?GP[k].mo+' мес':'—'}.</p>
+    <button class="btn danger" data-a="partHide">Не отслеживать этот расходник</button>
+  </div>`);
+}
+function partSave(){const car=curCar();car.parts=car.parts||{};const c=car.parts[PK]=car.parts[PK]||{};
+  const ik=parseAmount($('#pIntKm').value),im=parseAmount($('#pIntMo').value);c.km=ik>0?Math.round(ik):0;c.mo=im>0?Math.round(im):0;
+  if(!c.km&&!c.mo){toast('Укажите интервал в км или месяцах');return;}
+  const bk=$('#pKm'),bd=$('#pDate');if(bk){const v=bk.value.trim();c.baseKm=v===''?null:parseAmount(v);c.baseDate=bd.value||null;}
+  saveGarage();closeL(3);drawGarage();renderMaybe();updateBadge();toast('Сохранено');}
+function openPartsSetup(){const car=curCar();
+  openL(3,`<div class="lhead"><span></span><h2>Что отслеживать</h2><button class="txtbtn b r" data-a="close" data-l="3">Готово</button></div>
+  <div class="stack">${GPARTS.map(([g,list])=>`<div class="sec" style="padding-top:2px">${g}</div><div class="list">${list.map(([k])=>{const cf=partCfg(car,k);return `<div class="setrow"><span class="tx">${esc(cf.n)}</span><button class="tg" role="switch" data-a="partTg" data-k="${k}" aria-checked="${cf.on}" aria-label="${esc(cf.n)}"></button></div>`;}).join('')}</div>`).join('')}
+  <p class="note">Выключите то, чего нет в вашей машине. Например, у бензинового двигателя нет свечей накаливания.</p></div>`);}
+
+/* ---- документы ---- */
+let DK=null;
+function openDoc(k){const car=curCar(),d=((car.docs||{})[k]||{});DK=k;
+  const defW=curW()!=='all'?curW():S.wallets[0].id;
+  openL(3,`<div class="lhead"><button class="txtbtn l" data-a="close" data-l="3">Отмена</button><h2>${esc(GD[k].n)}</h2><button class="txtbtn b r" data-a="docSave">Готово</button></div>
+  <div class="stack">
+    <div class="form"><div class="field"><label for="dUntil">Действует до</label><input type="date" id="dUntil" value="${d.until||''}"></div></div>
+    <div class="sec" style="padding-top:2px">Если только что продлили</div>
+    <div class="form">
+      <div class="field"><label for="dCost">Стоимость</label><input id="dCost" inputmode="decimal" placeholder="0" autocomplete="off"><span class="u">₸</span></div>
+      <div class="field"><label for="dWal">Счёт</label><select id="dWal">${S.wallets.map(w=>`<option value="${w.id}" ${w.id===defW?'selected':''}>${esc(w.name)}</option>`).join('')}</select></div>
+    </div>
+    <p class="note">Если указать стоимость, приложение запишет расход в категории «Машина» и добавит продление в историю машины.</p>
+    ${d.until?`<button class="btn danger" data-a="docClear">Не отслеживать</button>`:''}
+  </div>`);}
+function docSave(){const car=curCar();car.docs=car.docs||{};const until=$('#dUntil').value,cost=parseAmount($('#dCost').value),wid=$('#dWal').value;
+  if(!until&&!(cost>0)){toast('Укажите дату окончания');return;}
+  if(until)car.docs[DK]={until};
+  if(cost>0){const lg={id:'g_'+uid(),carId:car.id,date:today(),km:Math.round(car.mileage),items:[],doc:DK,title:'',cost,place:'',walletId:wid};
+    const tx={id:uid(),ts:Date.now(),type:'exp',amount:cost,cat:'car',walletId:wid,date:lg.date,note:car.name+': '+GD[DK].n,garageId:lg.id};S.tx.push(tx);DB.putTx(tx);lg.txId=tx.id;GG().logs.push(lg);}
+  saveGarage();closeL(3);drawGarage();refreshBg();updateBadge();toast(cost>0?'Сохранено, расход записан':'Сохранено');}
+
+/* ---- запись обслуживания ---- */
+let SV=null;
+function openSvc(id,preK){
+  const car=curCar(),l=id?GG().logs.find(x=>x.id===id):null;
+  const defW=curW()!=='all'?curW():(S.settings.lastWallet&&W(S.settings.lastWallet)?S.settings.lastWallet:S.wallets[0].id);
+  const tx=l&&l.txId?S.tx.find(t=>t.id===l.txId):null;
+  SV={id:l?l.id:null,items:l?[...(l.items||[])]:(preK?[preK]:[]),doc:l?l.doc:null,write:l?!!tx:true};
+  const on=Object.keys(GP).filter(k=>partCfg(car,k).on||SV.items.includes(k));
+  openL(3,`<div class="lhead"><button class="txtbtn l" data-a="close" data-l="3">Отмена</button><h2>${l?'Запись':'Обслуживание'}</h2><button class="txtbtn b r" data-a="svcSave">Готово</button></div>
+  <div class="stack">
+    <div class="sec" style="padding-top:2px">Что меняли</div>
+    <div class="chipsel">${on.map(k=>`<button data-a="svcItem" data-k="${k}" aria-pressed="${SV.items.includes(k)}">${esc(GP[k].n)}</button>`).join('')}</div>
+    <div class="form">
+      <div class="field"><label for="sTitle">Другое</label><input id="sTitle" maxlength="80" placeholder="Например, замена лампы" value="${esc(l?l.title||'':'')}"></div>
+      <div class="field"><label for="sDate">Дата</label><input type="date" id="sDate" value="${l?l.date:today()}"></div>
+      <div class="field"><label for="sKm">Пробег</label><input id="sKm" inputmode="numeric" value="${l?(l.km||''):Math.round(car.mileage)}"><span class="u">км</span></div>
+      <div class="field"><label for="sCost">Стоимость</label><input id="sCost" inputmode="decimal" placeholder="0" autocomplete="off" value="${l&&+l.cost?String(l.cost).replace('.',','):''}"><span class="u">₸</span></div>
+      <div class="field"><label for="sPlace">Где</label><input id="sPlace" maxlength="40" placeholder="СТО, мастер" value="${esc(l?l.place||'':'')}"></div>
+      <div class="field"><label for="sWal">Счёт</label><select id="sWal">${S.wallets.map(w=>`<option value="${w.id}" ${w.id===(tx?tx.walletId:(l&&l.walletId)||defW)?'selected':''}>${esc(w.name)}</option>`).join('')}</select></div>
+      <div class="field"><label>Записать расход в бюджет</label><span style="flex:1"></span><button class="tg" role="switch" data-a="svcWrite" aria-checked="${SV.write}" aria-label="Записать расход"></button></div>
+    </div>
+    <p class="note">Расход попадёт в категорию «Машина» и уменьшит остаток счёта. Шкалы износа отмеченных расходников начнутся заново с этого пробега.</p>
+    ${l?`<button class="btn danger" data-a="svcDel">Удалить запись${tx?' и расход':''}</button>`:''}
+  </div>`);
+}
+function svcSave(){
+  const car=curCar(),title=$('#sTitle').value.trim(),date=$('#sDate').value||today(),km=parseAmount($('#sKm').value),cost=parseAmount($('#sCost').value),place=$('#sPlace').value.trim(),wid=$('#sWal').value;
+  if(!SV.items.length&&!title&&!SV.doc){toast('Выберите, что меняли, или впишите в «Другое»');return;}
+  let l=SV.id?GG().logs.find(x=>x.id===SV.id):null;
+  const rec={carId:l?l.carId:car.id,date,km:km>0?Math.round(km):null,items:SV.items.slice(),title,cost:cost>0?cost:0,place,walletId:wid};
+  if(l)Object.assign(l,rec);else{l=Object.assign({id:'g_'+uid(),doc:null},rec);GG().logs.push(l);}
+  const tx=l.txId?S.tx.find(t=>t.id===l.txId):null;
+  if(SV.write&&cost>0){const note=car.name+': '+logTitle(l);
+    if(tx){Object.assign(tx,{amount:cost,walletId:wid,date,note});DB.putTx(tx);}
+    else{const t={id:uid(),ts:Date.now(),type:'exp',amount:cost,cat:'car',walletId:wid,date,note,garageId:l.id};S.tx.push(t);DB.putTx(t);l.txId=t.id;}}
+  else if(tx){S.tx=S.tx.filter(t=>t.id!==tx.id);DB.delTx(tx.id);l.txId=null;}
+  if(km>car.mileage){car.mileage=km;car.mileageDate=today();}
+  S.settings.lastWallet=wid;saveSettings();saveGarage();closeL(3);drawGarage();refreshBg();updateBadge();
+  toast(SV.write&&cost>0?'Записано, расход '+money(cost)+' в бюджете':'Записано в историю');
+}
+function shareHist(){
+  const car=curCar(),logs=GG().logs.filter(l=>l.carId===car.id).sort((a,b)=>a.date<b.date?1:-1);
+  if(!logs.length){toast('В истории пока нет записей');return;}
+  const lines=[`История обслуживания: ${car.name}${car.year?' '+car.year:''}${car.plate?', '+car.plate:''}`,`Текущий пробег: ${nfKm(car.mileage)}`,''];
+  logs.forEach(l=>lines.push(`${fullDate(l.date)}${l.km?' · '+nfKm(l.km):''} — ${logTitle(l)}${+l.cost?' — '+money(+l.cost):''}${l.place?' ('+l.place+')':''}`));
+  lines.push('',`Всего записей: ${logs.length}. Составлено в приложении «Мой бюджет».`);
+  const text=lines.join('\n').replace(/ /g,' ');
+  (async()=>{try{if(navigator.share){await navigator.share({title:'История обслуживания '+car.name,text});return;}}catch(e){if(e&&e.name==='AbortError')return;}
+    try{await navigator.clipboard.writeText(text);toast('История скопирована, можно вставить в сообщение');}catch(e){toast('Не удалось поделиться');}})();
+}
+function renderMaybe(){if(S.tab==='home')renderHomeBody();}
+function refreshBg(){render();}
+
 function growBars(root){raf2(()=>{(root||document).querySelectorAll('.bar i[data-w]').forEach(i=>i.style.width=i.dataset.w+'%');});}
 
 /* ================= вкладки ================= */
@@ -806,6 +1116,7 @@ function renderHomeBody(){
   </div>`;
   if(over||near){const parts=[];if(over)parts.push('превышено: '+over);if(near)parts.push('близко к лимиту: '+near);
     h+=`<button class="alertrow" data-a="tab" data-t="budgets" style="--c:${over?'var(--neg)':'var(--warn)'}">${ic('alert')}<span>Лимиты: ${parts.join(', ')}</span>${ic('right','go')}</button>`;}
+  h+=garageMini();
   if(S.settings.demo)h+=`<div class="promo"><b>Это примеры операций</b><p>Они показывают, как всё работает. Удалите их, когда будете готовы вести свой бюджет.</p><div class="acts"><button class="btn main" data-a="clearDemo">Начать с нуля</button></div></div>`;
   else if(!S.settings.onboarded&&!S.tx.length){const w0=S.wallets[0];
     h+=`<div class="promo"><b>Сколько у вас сейчас денег?</b><p>Укажите остаток в кошельке. Дальше он будет меняться сам: доходы прибавляются, расходы вычитаются.</p><div class="acts"><button class="btn main" data-a="walletEdit" data-id="${w0.id}">Указать остаток</button><button class="btn soft" data-a="skipOnb">Позже</button></div></div>`;}
@@ -880,6 +1191,7 @@ function renderSettings(){
     <div class="hh"><h1 class="lt">Ещё</h1></div>
     <div class="list">
       <button class="setrow" data-a="openWallets">${ciC({icon:'wallet',color:'#0B8F6E'})}<span class="tx">Счета</span><span class="vv num">${S.wallets.length}</span>${ic('right','go')}</button>
+      <button class="setrow" data-a="openGarage">${ciC({icon:'car',color:'#4C6EF5'})}<span class="tx">Авто-гараж</span><span class="vv num">${GG().cars.length||''}</span>${ic('right','go')}</button>
       <button class="setrow" data-a="goSubs">${ciC({icon:'repeat',color:'#5B5BD6'})}<span class="tx">Подписки и платежи</span><span class="vv num">${S.subs.length||''}</span>${ic('right','go')}</button>
       <button class="setrow" data-a="openSearch">${ciC({icon:'search',color:'#3E63DD'})}<span class="tx">Поиск операций</span>${ic('right','go')}</button>
       <button class="setrow" data-a="add" data-t="tr">${ciC({icon:'tr',color:'#8E4EC6'})}<span class="tx">Перевод между счетами</span>${ic('right','go')}</button>
@@ -1098,7 +1410,7 @@ function budgetSave(id){const v=parseAmount($('#bLim').value);if(v>0)S.budgets[i
 
 /* ================= резервная копия ================= */
 async function exportData(){
-  const data=JSON.stringify({app:'moi-budget',version:3,exported:new Date().toISOString(),wallets:S.wallets,tx:S.tx,budgets:S.budgets,subs:S.subs,rates:S.settings.rates||null});
+  const data=JSON.stringify({app:'moi-budget',version:3,exported:new Date().toISOString(),wallets:S.wallets,tx:S.tx,budgets:S.budgets,subs:S.subs,rates:S.settings.rates||null,garage:S.garage});
   const name='budget-'+today()+'.json';
   try{const f=new File([data],name,{type:'application/json'});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'Резервная копия бюджета'});toast('Копия готова');return;}}
   catch(e){if(e&&e.name==='AbortError')return;}
@@ -1113,6 +1425,7 @@ function importFile(f){
     const def=S.wallets[0].id,have=new Set(S.tx.map(t=>t.id));
     const fresh=j.tx.filter(t=>t&&t.id&&!have.has(t.id)&&['exp','inc','tr'].includes(t.type)&&+t.amount>0&&/^\d{4}-\d{2}-\d{2}$/.test(t.date)).map(t=>{const o={id:String(t.id),type:t.type,amount:+t.amount,cat:String(t.cat||''),date:t.date,note:String(t.note||''),ts:+t.ts||0,walletId:W(t.walletId)?t.walletId:def};if(t.type==='tr'){o.toWallet=W(t.toWallet)?t.toWallet:def;o.cat='transfer';}return o;});
     S.tx.push(...fresh);DB.putMany(fresh);saveWallets();
+    if(j.garage&&Array.isArray(j.garage.cars)){j.garage.cars.forEach(c=>{if(c&&c.id&&!GG().cars.some(x=>x.id===c.id))GG().cars.push(c);});(j.garage.logs||[]).forEach(l=>{if(l&&l.id&&!GG().logs.some(x=>x.id===l.id))GG().logs.push(l);});if(!GG().current&&GG().cars[0])GG().current=GG().cars[0].id;saveGarage();}
     if(Array.isArray(j.subs)){j.subs.forEach(x=>{if(x&&x.id&&x.name&&+x.amount>0&&/^\d{4}-\d{2}-\d{2}$/.test(x.next)&&!S.subs.some(z=>z.id===x.id))S.subs.push({id:String(x.id),name:String(x.name),icon:SUBICONS.includes(x.icon)?x.icon:'repeat',color:/^#[0-9a-f]{6}$/i.test(x.color)?x.color:'#5B5BD6',amount:+x.amount,currency:CUR[x.currency]?x.currency:'KZT',period:PERIODS[x.period]?x.period:'month',next:x.next,anchor:+x.anchor||parseISO(x.next).getDate(),walletId:W(x.walletId)?x.walletId:def,auto:x.auto!==false,active:x.active!==false});});saveSubs();}
     if(j.rates&&+j.rates.USD>0&&+j.rates.RUB>0&&!S.settings.rates)S.settings.rates={USD:+j.rates.USD,RUB:+j.rates.RUB};
     if(j.budgets&&typeof j.budgets==='object'){Object.entries(j.budgets).forEach(([k,v])=>{if(+v>0)S.budgets[k]=+v;});saveBudgets();}
@@ -1121,7 +1434,7 @@ function importFile(f){
   r.readAsText(f);
 }
 function resetAll(){
-  S.tx=[];S.budgets={};S.subs=[];saveSubs();DB.clearTx();updateBadge();
+  S.tx=[];S.budgets={};S.subs=[];saveSubs();S.garage={cars:[],logs:[],current:null};saveGarage();DB.clearTx();updateBadge();
   S.wallets=[newWallet({id:'w_main'})];S.settings.wallet='w_main';S.settings.demo=false;S.settings.onboarded=false;S.settings.lastWallet=null;
   saveWallets();saveBudgets();saveSettings();S.month=ym(new Date());
 }
@@ -1133,7 +1446,7 @@ function toast(msg,label,act){
   if(label){const b=document.createElement('button');b.textContent=label;b.onclick=()=>{act();el.classList.remove('on');};el.appendChild(b);}
   el.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('on'),label?5000:2200);
 }
-function refresh(){render();if(S.sheet==='wallets')drawWallets();else if(S.sheet==='search'){const q=$('#qres');if(q)q.innerHTML=searchResults();}}
+function refresh(){render();if(S.sheet==='garage')drawGarage();else if(S.sheet==='wallets')drawWallets();else if(S.sheet==='search'){const q=$('#qres');if(q)q.innerHTML=searchResults();}}
 
 /* ================= свайп для удаления ================= */
 const SWW=92;let swOpen=null,swJust=0;
@@ -1184,6 +1497,30 @@ function deleteTx(id,wrap){
 /* ================= обработка нажатий ================= */
 function arm(b,label,fn){if(!b.classList.contains('armed')){const old=b.textContent;b.classList.add('armed');b.textContent=label;setTimeout(()=>{if(b.isConnected){b.classList.remove('armed');b.textContent=old;}},3500);return;}fn();}
 const ACT={
+  openGarage:()=>openGarage(),
+  gTab:b=>{S.gTab=b.dataset.t;drawGarage();$('#l1').scrollTop=0;},
+  carPick:b=>{GG().current=b.dataset.id;saveGarage();drawGarage();renderMaybe();},
+  carEdit:b=>openCarEdit(b.dataset.id),
+  carColor:b=>{CE.color=b.dataset.v;$$('[data-a="carColor"]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===CE.color));},
+  carSave:()=>carSave(),
+  carDel:b=>arm(b,'Нажмите ещё раз для удаления',()=>{const id=CE.id;GG().cars=GG().cars.filter(c=>c.id!==id);GG().logs=GG().logs.filter(l=>l.carId!==id);GG().current=GG().cars[0]?GG().cars[0].id:null;saveGarage();closeL(3);drawGarage();renderMaybe();updateBadge();toast('Машина удалена. Расходы в бюджете остались');}),
+  kmEdit:()=>openKm(),
+  kmSave:()=>kmSave(),
+  partOpen:b=>openPart(b.dataset.k),
+  partSave:()=>partSave(),
+  partHide:()=>{const car=curCar();car.parts=car.parts||{};(car.parts[PK]=car.parts[PK]||{}).on=false;saveGarage();closeL(3);drawGarage();renderMaybe();updateBadge();toast('Скрыто. Вернуть можно в настройке списка');},
+  partsSetup:()=>openPartsSetup(),
+  partTg:b=>{const car=curCar(),k=b.dataset.k;car.parts=car.parts||{};const c=car.parts[k]=car.parts[k]||{};c.on=!partCfg(car,k).on;b.setAttribute('aria-checked',c.on);saveGarage();drawGarage();renderMaybe();updateBadge();},
+  docOpen:b=>openDoc(b.dataset.k),
+  docSave:()=>docSave(),
+  docClear:()=>{const car=curCar();delete car.docs[DK];saveGarage();closeL(3);drawGarage();renderMaybe();updateBadge();},
+  svcNew:b=>openSvc(null,b.dataset.k),
+  svcEdit:b=>openSvc(b.dataset.id),
+  svcItem:b=>{const k=b.dataset.k,i=SV.items.indexOf(k);if(i>=0)SV.items.splice(i,1);else SV.items.push(k);b.setAttribute('aria-pressed',i<0);},
+  svcWrite:b=>{SV.write=!SV.write;b.setAttribute('aria-checked',SV.write);},
+  svcSave:()=>svcSave(),
+  svcDel:b=>arm(b,'Нажмите ещё раз для удаления',()=>{const l=GG().logs.find(x=>x.id===SV.id);if(l&&l.txId){S.tx=S.tx.filter(t=>t.id!==l.txId);DB.delTx(l.txId);}GG().logs=GG().logs.filter(x=>x.id!==SV.id);saveGarage();closeL(3);drawGarage();refreshBg();updateBadge();toast('Запись удалена');}),
+  shareHist:()=>shareHist(),
   noop:()=>{},
   goSubs:()=>{S.tab='budgets';S.budTab='subs';window.scrollTo(0,0);render();},
   budTab:b=>{S.budTab=b.dataset.t;render();},
@@ -1271,10 +1608,10 @@ document.addEventListener('keydown',e=>{
 /* ================= запуск ================= */
 (async function init(){
   const ok=await DB.open();
-  if(ok){const [tx,b,st,ws,sb]=await Promise.all([DB.allTx(),DB.get('budgets'),DB.get('settings'),DB.get('wallets'),DB.get('subs')]);
-    S.tx=tx||[];S.budgets=b||{};if(st)Object.assign(S.settings,st);S.wallets=Array.isArray(ws)?ws:[];S.subs=Array.isArray(sb)?sb:[];}
+  if(ok){const [tx,b,st,ws,sb,gr]=await Promise.all([DB.allTx(),DB.get('budgets'),DB.get('settings'),DB.get('wallets'),DB.get('subs'),DB.get('garage')]);
+    S.tx=tx||[];S.budgets=b||{};if(st)Object.assign(S.settings,st);S.wallets=Array.isArray(ws)?ws:[];S.subs=Array.isArray(sb)?sb:[];if(gr&&Array.isArray(gr.cars))S.garage=gr;}
   if(!S.settings.seeded&&!S.tx.length&&inFrame){
-    const d=seedDemo();S.wallets=d.wallets;S.tx=d.tx;S.subs=d.subs;saveSubs();S.budgets={cafe:50000,food:150000,transport:30000,fun:25000,home:200000};
+    const d=seedDemo();S.wallets=d.wallets;S.tx=d.tx;S.subs=d.subs;saveSubs();S.garage=d.garage;saveGarage();S.budgets={cafe:50000,food:150000,transport:30000,fun:25000,home:200000};
     S.settings.seeded=true;S.settings.demo=true;S.settings.onboarded=true;S.settings.wallet='all';
     DB.putMany(S.tx);saveBudgets();saveWallets();saveSettings();
   }
