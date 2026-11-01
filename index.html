@@ -416,23 +416,23 @@ body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)
 .kp{border-radius:14px}
 .layer{border-radius:18px 18px 0 0}
 .seg{border-radius:10px}.seg button{border-radius:8px}
-.seg button[aria-pressed="true"]{background:linear-gradient(180deg,color-mix(in srgb,var(--fg) 88%,var(--bg)),var(--fg));color:var(--bg);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 10px -6px rgba(0,0,0,.6)}
+.seg button[aria-pressed="true"]{background:linear-gradient(180deg,color-mix(in srgb,var(--fg) 88%,var(--bg)),var(--fg));color:var(--bg);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
 .ci{background:linear-gradient(160deg,color-mix(in srgb,var(--c) 30%,var(--card2)),color-mix(in srgb,var(--c) 12%,var(--card2)));color:color-mix(in srgb,var(--c) 85%,var(--fg));border-radius:11px;box-shadow:inset 0 1px 0 var(--hi),inset 0 0 0 1px color-mix(in srgb,var(--c) 22%,transparent)}
 .cg .ci{opacity:1}
-.cg[aria-pressed="true"] .ci{background:linear-gradient(160deg,color-mix(in srgb,var(--c) 85%,#FFFFFF),var(--c));color:#FFFFFF;box-shadow:0 0 0 2px var(--bg),0 0 0 3.5px var(--fg),0 6px 14px -6px var(--c);transform:none}
+.cg[aria-pressed="true"] .ci{background:linear-gradient(160deg,color-mix(in srgb,var(--c) 85%,#FFFFFF),var(--c));color:#FFFFFF;box-shadow:0 0 0 2px var(--bg),0 0 0 3.5px var(--fg);transform:none}
 .cg[aria-pressed="true"]{color:var(--fg)}
 .am.pos,.pos{color:var(--pos)}
 .am.trc{color:var(--fg2)}
 .st .dot{background:color-mix(in srgb,var(--c) 16%,var(--card2));color:var(--c);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 22%,transparent)}
 .amtp{background:linear-gradient(160deg,color-mix(in srgb,var(--c) 16%,var(--card)) 0%,var(--card) 70%)!important;box-shadow:inset 0 1px 0 var(--hi),inset 0 0 0 1px var(--sep),var(--shadow);border-radius:14px}
 .tseg button[aria-pressed="true"]{color:var(--bg);background:var(--fg)}
-.wcard{background:radial-gradient(120% 95% at 100% 0%,color-mix(in srgb,var(--c) 55%,transparent) 0%,transparent 58%),radial-gradient(90% 70% at 0% 100%,color-mix(in srgb,var(--c) 22%,transparent) 0%,transparent 60%),linear-gradient(155deg,#202024 0%,#0B0B0C 100%)!important;color:#FFFFFF;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.08),0 18px 34px -18px rgba(0,0,0,.75),0 10px 30px -18px color-mix(in srgb,var(--c) 70%,transparent)!important;border-radius:18px;isolation:isolate}
+.wcard{background:radial-gradient(120% 95% at 100% 0%,color-mix(in srgb,var(--c) 55%,transparent) 0%,transparent 58%),radial-gradient(90% 70% at 0% 100%,color-mix(in srgb,var(--c) 22%,transparent) 0%,transparent 60%),linear-gradient(155deg,#202024 0%,#0B0B0C 100%)!important;color:#FFFFFF;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.08)!important;border-radius:18px;isolation:isolate}
 .wcard::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 38%);pointer-events:none;z-index:0}
 .wcard::after,.sheen::after{content:"";position:absolute;top:0;bottom:0;left:0;right:auto;width:60%;height:auto;border-radius:0;background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.0) 20%,rgba(255,255,255,.16) 48%,rgba(255,255,255,.04) 60%,transparent 80%);transform:translateX(-160%) skewX(-12deg);animation:sheen 7s cubic-bezier(.4,0,.2,1) infinite;pointer-events:none;z-index:0;display:block}
 .wcard:nth-child(2)::after{animation-delay:1.2s}.wcard:nth-child(3)::after{animation-delay:2.4s}.wcard:nth-child(4)::after{animation-delay:3.6s}
 @keyframes sheen{0%{transform:translateX(-160%) skewX(-12deg)}55%,100%{transform:translateX(260%) skewX(-12deg)}}
 .wcard.add::before,.wcard.add::after{display:none}
-.wcard .wc-ic{background:linear-gradient(160deg,color-mix(in srgb,var(--c) 70%,#FFFFFF 0%),color-mix(in srgb,var(--c) 55%,#000));color:#FFFFFF;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 4px 10px -4px color-mix(in srgb,var(--c) 80%,transparent)}
+.wcard .wc-ic{background:linear-gradient(160deg,color-mix(in srgb,var(--c) 70%,#FFFFFF 0%),color-mix(in srgb,var(--c) 55%,#000));color:#FFFFFF;box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
 .wcard[data-id="all"] .wc-ic{background:rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
 .wcard .wc-ed,.carcard .kmbtn{background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
 .wcard .wc-l{opacity:.6;text-transform:uppercase;letter-spacing:.08em;font-size:11px;font-weight:600}
@@ -444,10 +444,10 @@ body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)
 .tab[aria-current="page"]{color:var(--fg)}
 .tab{color:var(--g5)}
 .tab[aria-current="page"]{color:var(--fg)!important}
-.addkey{border-radius:15px;background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#FFFFFF),var(--accent) 55%,color-mix(in srgb,var(--accent) 82%,#000));color:var(--on-accent);position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 10px 22px -10px rgba(0,0,0,.55),0 6px 18px -10px var(--accent)}
-.addkey::after{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.55) 50%,transparent 80%);transform:translateX(-160%) skewX(-12deg);animation:sheen 6s cubic-bezier(.4,0,.2,1) 1s infinite;pointer-events:none}
+.addkey{border-radius:15px;background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#FFFFFF),var(--accent) 55%,color-mix(in srgb,var(--accent) 82%,#000));color:var(--on-accent);position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 0 0 1px rgba(0,0,0,.08)}
+.addkey::after{content:none;display:none}
 .addkey .i{position:relative;z-index:1}
-.mini .ap{background:radial-gradient(110% 90% at 100% 0%,rgba(76,110,245,.65),transparent 60%),linear-gradient(155deg,#26262B,#0A0A0B);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 0 1px rgba(255,255,255,.08),0 8px 18px -10px rgba(76,110,245,.7);border-radius:12px;position:relative;overflow:hidden}
+.mini .ap{background:radial-gradient(110% 90% at 100% 0%,rgba(76,110,245,.65),transparent 60%),linear-gradient(155deg,#26262B,#0A0A0B);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 0 1px rgba(255,255,255,.08);border-radius:12px;position:relative;overflow:hidden}
 .mini .ap::after{content:"";position:absolute;top:0;bottom:0;left:0;width:70%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.3) 50%,transparent 80%);transform:translateX(-160%) skewX(-12deg);animation:sheen 8s cubic-bezier(.4,0,.2,1) 2s infinite}
 .mini .ap .i{position:relative;z-index:1}
 .mini .cnt{background:var(--fg);color:var(--bg)}
@@ -476,12 +476,12 @@ body.sheet-open .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 16px)
 .txtbtn.l{color:var(--fg2)}
 .linkbtn,.more,.addrow{color:var(--fg)}
 .setrow.link .tx{color:var(--fg)}
-.btn.main,.save{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 85%,#FFFFFF),var(--accent));box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 8px 18px -10px rgba(0,0,0,.5)}
-.tabbar{box-shadow:inset 0 1px 0 var(--hi),0 -10px 30px -20px rgba(0,0,0,.6)}
+.btn.main,.save{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 85%,#FFFFFF),var(--accent));box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}
+.tabbar{box-shadow:inset 0 1px 0 var(--hi)}
 .soon .sh .i{color:var(--warn)}
 .empty .art{background:linear-gradient(160deg,var(--card2),var(--card))}
 .mini .cnt{background:var(--warn);color:#1A1200}
-@media (prefers-reduced-motion: reduce){.wcard::after,.addkey::after,.mini .ap::after{animation:none;display:none}}
+@media (prefers-reduced-motion: reduce){.wcard::after,.mini .ap::after{animation:none;display:none}}
 @media (max-height:700px){
   .layer.full{top:calc(env(safe-area-inset-top,0px) + 8px)}
   #l2 .ed{gap:7px} #l2 .lhead{min-height:40px}
@@ -1298,7 +1298,7 @@ function renderSettings(){
     <div class="list">
       <div class="setrow"><span class="tx">Операций</span><span class="vv num">${S.tx.length}</span></div>
       <div class="setrow"><span class="tx">Где хранятся</span><span class="vv">Только на этом телефоне</span></div>
-      <div class="setrow"><span class="tx">Версия приложения</span><span class="vv num">15</span></div>
+      <div class="setrow"><span class="tx">Версия приложения</span><span class="vv num">16</span></div>
     </div>
     <button class="btn danger" data-a="wipe">Удалить все данные</button>
   </section>`;
